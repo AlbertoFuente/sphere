@@ -27,6 +27,7 @@
     "gulp-watch": "^4.2.4"
   },
   "devDependencies": {
+    "es6-module-loader": "^0.17.0",
     "lodash": "^3.9.3",
     "traceur": "0.0.90"
   }
