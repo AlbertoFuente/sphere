@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    export default class UpMenu() {
+    class UpMenu {
         constructor(title) {
             this.title = title;
         }
@@ -10,4 +10,6 @@
             menuBar.innerHTML = this.title;
         }
     }
+
+    export default UpMenu;
 }());
