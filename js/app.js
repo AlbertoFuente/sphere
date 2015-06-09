@@ -1,8 +1,12 @@
-(function() {
+define(['components'], function(components) {
     'use strict';
 
-    import UpMenu from "./components";
+    var _init = function() {
+        var showMenuTitle = components.upMenu('Menu Title');
+        components.upMenu.prototype.insertMenu();
+    };
 
-    let showMenuTitle = new UpMenu('Menu Title');
-    showMenuTitle.insertMenu();
-}());
+    return {
+        init: _init
+    };
+});

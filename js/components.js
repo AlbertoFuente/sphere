@@ -1,15 +1,20 @@
-(function() {
+define(function() {
     'use strict';
 
-    class UpMenu {
-        constructor(title) {
-            this.title = title;
-        }
-        insertMenu() {
-            let menuBar = document.getElementById('menuBar');
-            menuBar.innerHTML = this.title;
-        }
+    var _title = null;
+
+    var _upMenu = function(title) {
+        _title = title;
+    };
+
+    if (!_upMenu.prototype.insertMenu) {
+        _upMenu.prototype.insertMenu = function() {
+            var menuBar = document.getElementById('menuBar');
+            menuBar.innerHTML = _title;
+        };
     }
 
-    export default UpMenu;
-}());
+    return {
+        upMenu: _upMenu
+    };
+});
