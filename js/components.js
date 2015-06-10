@@ -1,5 +1,9 @@
-define(function() {
+define(['text!../views/topBar.html'], function(html) {
     'use strict';
+
+    // ============================================
+    // TOP BAR
+    // ============================================
 
     var _title = null;
 
@@ -8,9 +12,31 @@ define(function() {
     };
 
     if (!_upMenu.prototype.insertMenu) {
-        _upMenu.prototype.insertMenu = function() {
+        _upMenu.prototype.insertTitle = function() {
             var menuBar = document.getElementById('menuBar');
-            menuBar.innerHTML = _title;
+            menuBar.innerHTML = html.replace('title', _title);
+        };
+    }
+
+    if (!_upMenu.prototype.inserMenu) {
+        _upMenu.prototype.insertMenu = function(menuOptions) {
+            var opts = document.getElementById('menuBar');
+
+            if (opts.childNodes.length > 0) {
+                var optsUl = document.getElementById('nav-mobile');
+
+                if (optsUl !== undefined) {
+                    Object.keys(menuOptions).map(function(key) {
+                        var ulOpt = document.createElement('li'),
+                            aOpt = document.createElement('a');
+
+                        aOpt.setAttribute('href', menuOptions[key] + '.html');
+                        aOpt.innerHTML = menuOptions[key];
+                        ulOpt.appendChild(aOpt);
+                        optsUl.appendChild(ulOpt);
+                    });
+                }
+            }
         };
     }
 
