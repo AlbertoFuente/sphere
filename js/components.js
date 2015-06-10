@@ -18,7 +18,7 @@ define(['text!../views/topBar.html'], function(html) {
         };
     }
 
-    if (!_upMenu.prototype.inserMenu) {
+    if (!_upMenu.prototype.insertMenu) {
         _upMenu.prototype.insertMenu = function(menuOptions) {
             var opts = document.getElementById('menuBar');
 
