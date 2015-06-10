@@ -7,7 +7,7 @@ define(['components'], function(components) {
             op2: 'Posts',
             op3: 'Books'
         };
-        components.upMenu('Sphere', menuOptions);
+        components.upMenu('Sphere');
         components.upMenu.prototype.insertTitle();
         components.upMenu.prototype.insertMenu(menuOptions);
     };
