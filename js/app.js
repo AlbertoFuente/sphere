@@ -1,4 +1,4 @@
-define(['components'], function(components) {
+define(['topBar'], function(topBar) {
     'use strict';
 
     var _init = function() {
@@ -7,9 +7,9 @@ define(['components'], function(components) {
             op2: 'Posts',
             op3: 'Books'
         };
-        components.upMenu('Sphere');
-        components.upMenu.prototype.insertTitle();
-        components.upMenu.prototype.insertMenu(menuOptions);
+        topBar.upMenu('Sphere');
+        topBar.upMenu.prototype.insertTitle();
+        topBar.upMenu.prototype.insertMenu(menuOptions);
     };
 
     return {
