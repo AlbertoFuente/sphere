@@ -1,4 +1,4 @@
-define(['text!../views/topBar.html'], function(html) {
+define(['text!../views/topBar.html', 'utils'], function(html, utils) {
     'use strict';
 
     // ============================================
@@ -25,7 +25,7 @@ define(['text!../views/topBar.html'], function(html) {
             if (opts.childNodes.length > 0) {
                 var optsUl = document.getElementById('nav-mobile');
 
-                if (optsUl !== undefined) {
+                if (!utils._isUnd(optsUl)) {
                     Object.keys(menuOptions).map(function(key) {
                         var ulOpt = document.createElement('li'),
                             aOpt = document.createElement('a');
