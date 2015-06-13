@@ -12,7 +12,8 @@ define(['topBar', 'principalContent', 'services'], function(topBar, pCont, servi
         topBar.upMenu.prototype.insertTitle();
         topBar.upMenu.prototype.insertMenu(menuOptions);
         // post content
-        services.configCall(pCont.pContent);
+        //services.configCall(pCont.pContent);
+        services.parseRSS('http://www.echojs.com/rss', pCont.pContent);
     };
 
     return {
