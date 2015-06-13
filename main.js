@@ -3,6 +3,7 @@ require.config({
         'app': 'js/app',
         'topBar': 'js/topBar',
         'services': 'js/services',
+        'principalContent': 'js/principalContent',
         // Plugins
         'text': 'js/plugins/text',
         // Vendor
@@ -16,6 +17,7 @@ require.config({
 require(['app',
         'topBar',
         'services',
+        'principalContent',
         'text',
         'jquery',
         'utils'
