@@ -1,4 +1,4 @@
-define(['topBar'], function(topBar) {
+define(['topBar', 'principalContent', 'services'], function(topBar, pCont, services) {
     'use strict';
 
     var _init = function() {
@@ -7,9 +7,12 @@ define(['topBar'], function(topBar) {
             op2: 'Posts',
             op3: 'Books'
         };
+        // top bar
         topBar.upMenu('Sphere');
         topBar.upMenu.prototype.insertTitle();
         topBar.upMenu.prototype.insertMenu(menuOptions);
+        // post content
+        services.configCall(pCont.pContent);
     };
 
     return {
