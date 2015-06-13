@@ -1,4 +1,4 @@
-define(function() {
+define(['jquery'], function($) {
     'use strict';
 
     var _jsonP = function(url, callback, error, nomparam) {
@@ -16,7 +16,6 @@ define(function() {
                 head.removeChild(queryScript);
 
             queryScript = document.createElement("script");
-
             queryScript.src = url + separador + nomparam + "=" + callback;
 
             if (error)
@@ -29,9 +28,19 @@ define(function() {
                 error = 'Problems connecting with ' + url;
 
             _jsonP(url, callback, error);
+        },
+        _parseRSS = function(url, callback) {
+            $.ajax({
+                url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(url),
+                dataType: 'json',
+                success: function(data) {
+                    callback(data.responseData.feed);
+                }
+            });
         };
 
     return {
-        configCall: _configCall
-    }
+        configCall: _configCall,
+        parseRSS: _parseRSS
+    };
 });
