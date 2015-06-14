@@ -1,6 +1,10 @@
 define(['jquery'], function($) {
     'use strict';
 
+    // ===================================
+    // SERVICES
+    // ===================================
+
     var _jsonP = function(url, callback, error, nomparam) {
             var queryScript,
                 separador = "?",
