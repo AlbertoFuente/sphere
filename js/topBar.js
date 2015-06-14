@@ -25,7 +25,7 @@ define(['text!../views/topBar.html', 'utils'], function(html, utils) {
             if (opts.childNodes.length > 0) {
                 var optsUl = document.getElementById('nav-mobile');
 
-                if (!utils._isUnd(optsUl)) {
+                if (!utils._isUnd(optsUl))
                     Object.keys(menuOptions).map(function(key) {
                         var ulOpt = document.createElement('li'),
                             aOpt = document.createElement('a');
@@ -35,7 +35,6 @@ define(['text!../views/topBar.html', 'utils'], function(html, utils) {
                         ulOpt.appendChild(aOpt);
                         optsUl.appendChild(ulOpt);
                     });
-                }
             }
         };
     }
