@@ -34,9 +34,7 @@ define(['text!../views/principalContent.html', 'utils'], function(html, utils) {
                         postsContainer.appendChild(subDiv);
                     }
                 }
-                miniPanel.appendChild(title);
-                miniPanel.appendChild(link);
-                miniPanel.appendChild(postsContainer);
+                utils._appendArr(miniPanel, [title, link, postsContainer]);
             }
         }
     };
