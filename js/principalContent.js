@@ -18,7 +18,7 @@ define(['text!../views/principalContent.html', 'utils'], function(html, utils) {
                     postsContainer = document.createElement('div');
 
                 title.innerHTML = posts.title;
-                link.setAttribute('href', posts.link + '.html');
+                utils._setAttr(link, 'href', posts.link + '.html');
                 link.innerHTML = posts.link;
 
                 if (!utils._isUnd(posts.entries) && posts.entries.length > 0) {
@@ -27,7 +27,7 @@ define(['text!../views/principalContent.html', 'utils'], function(html, utils) {
                     for (i; i < entries; i++) {
                         var subDiv = document.createElement('div'),
                             subLink = document.createElement('a');
-                        subLink.setAttribute('href', posts.entries[i].link);
+                        utils._setAttr(subLink, 'href', posts.entries[i].link);
                         subLink.innerHTML = posts.entries[i].title;
 
                         subDiv.appendChild(subLink);

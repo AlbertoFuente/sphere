@@ -30,7 +30,7 @@ define(['text!../views/topBar.html', 'utils'], function(html, utils) {
                         var ulOpt = document.createElement('li'),
                             aOpt = document.createElement('a');
 
-                        aOpt.setAttribute('href', menuOptions[key] + '.html');
+                        utils._setAttr(aOpt, 'href', menuOptions[key] + '.html');
                         aOpt.innerHTML = menuOptions[key];
                         ulOpt.appendChild(aOpt);
                         optsUl.appendChild(ulOpt);
