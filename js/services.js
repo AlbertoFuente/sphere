@@ -27,10 +27,8 @@ define(['jquery'], function($) {
 
             head.appendChild(queryScript);
         },
-        _configCall = function(callback) {
-            var url = 'http://http://www.echojs.com/latest/0',
-                error = 'Problems connecting with ' + url;
-
+        _configCall = function(callback, url) {
+            var error = 'Problems connecting with ' + url;
             _jsonP(url, callback, error);
         },
         _parseRSS = function(url, callback) {
