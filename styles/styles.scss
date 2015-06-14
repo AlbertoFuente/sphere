@@ -1,0 +1,37 @@
+.echoMenu {
+    float: left;
+    margin-top: 10px;
+    a {
+        color: grey;
+        font-size: 10px;
+    }
+    .subMenuLink {
+        color: #2196f3;
+        font-size: 12px;
+        &:hover {
+            color: #90caf9;
+        }
+    }
+}
+
+.postMenu {
+    margin-top: 15px;
+    div {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+.echoContent {
+    left: auto;
+    right: 0;
+    position: absolute;
+    margin-top: 20px;
+    height: 700px;
+    object {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+}
