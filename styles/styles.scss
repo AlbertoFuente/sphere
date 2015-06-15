@@ -11,6 +11,12 @@
         &:hover {
             color: #90caf9;
         }
+        &.selected {
+            color: #0d47a1;
+        }
+        &.now {
+            color: #e57373;
+        }
     }
 }
 
