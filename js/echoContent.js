@@ -1,8 +1,8 @@
-define(['text!../views/principalContent.html', 'utils', 'jquery'], function(html, utils, $) {
+define(['text!../views/echoContent.html', 'utils', 'jquery'], function(html, utils, $) {
     'use strict';
 
     // ===================================
-    // PRINCIPAL CONTENT
+    // ECHO CONTENT
     // ===================================
 
     var _appendContent = function(elem, link) {
@@ -10,12 +10,11 @@ define(['text!../views/principalContent.html', 'utils', 'jquery'], function(html
             return elem;
         },
         _echoContent = function(posts) {
-            var container = document.getElementById('postContent');
+            var container = document.getElementById('echoContent');
 
             if (!utils._isUnd(posts) && !utils._isUnd(html)) {
                 container.innerHTML = html;
-                var panel = document.getElementById('postContent'),
-                    miniPanel = document.getElementById('echoMiniPanel');
+                var miniPanel = document.getElementById('echoMiniPanel');
 
                 if (!utils._isUnd(miniPanel)) {
                     var title = document.createElement('h5'),
@@ -44,7 +43,7 @@ define(['text!../views/principalContent.html', 'utils', 'jquery'], function(html
                         }
                     }
                     utils._appendArr(miniPanel, [title, link, postsContainer]);
-                    panel.appendChild(miniPanel);
+                    container.appendChild(miniPanel);
 
                     if (miniPanel.childNodes.length > 0) {
                         var j = 0,
