@@ -62,7 +62,21 @@ define(['text!../views/principalContent.html', 'utils', 'jquery'], function(html
                 if (!utils._isUnd(document.getElementsByClassName('subMenuLink'))) {
                     $('.subMenuLink').click(function(ev) {
                         $('#echoContentPanel').empty();
-                        var link = ev.currentTarget.attributes.data.value;
+
+                        var panel = miniPanel.childNodes[3].childNodes,
+                            link = ev.currentTarget.attributes.data.value,
+                            i = 0,
+                            panelLength = panel.length;
+
+                        for (i; i < panelLength; i++) {
+                            var links = panel[i].childNodes[0];
+                            if ($(links).hasClass('now')) {
+                                $(links).removeClass('now');
+                            }
+                        }
+
+                        $(this).addClass('selected');
+                        $(this).addClass('now');
                         _appendContent(pContainer, link);
                     });
                 }
