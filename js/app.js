@@ -1,4 +1,4 @@
-define(['topBar', 'principalContent', 'services'], function(topBar, pCont, services) {
+define(['topBar', 'echoContent', 'infoContent', 'services'], function(topBar, eCont, iCont, services) {
     'use strict';
 
     var infoWorld = 'http://www.infoworld.com/news/index.rss',
@@ -19,7 +19,8 @@ define(['topBar', 'principalContent', 'services'], function(topBar, pCont, servi
         topBar.upMenu.prototype.insertTitle();
         topBar.upMenu.prototype.insertMenu(menuOptions);
         // post content (echoJS)
-        services.parseRSS(echoJS, pCont.echoContent);
+        services.parseRSS(echoJS, eCont.echoContent);
+        services.parseRSS(infoWorld, iCont.infoContent);
     };
 
     return {
