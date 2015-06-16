@@ -6,7 +6,8 @@ define(['topBar', 'echoContent', 'infoContent', 'services'], function(topBar, eC
         dailyJS = 'http://dailyjs.com/rss/',
         fiveJS = 'https://fivejs.codeschool.com/feed.rss',
         jsRocks = 'http://jsrocks.org/rss',
-        frontEndLabs = 'http://frontendlabs.io/feed';
+        frontEndLabs = 'http://frontendlabs.io/feed',
+        javascript = 'https://www.javascript.com/feed/rss';
 
     var _init = function() {
         var menuOptions = {
