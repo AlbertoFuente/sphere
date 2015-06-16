@@ -21,10 +21,16 @@ define(function() {
         }
         return parent;
     };
+    // insert iframe
+    var _appendContent = function(elem, link) {
+        elem.innerHTML = '<object type="text/html" data="' + link + '" ></object>';
+        return elem;
+    };
 
     return {
         _isUnd: _isUndefined,
         _setAttr: _setAttribute,
-        _appendArr: _appendArray
+        _appendArr: _appendArray,
+        _appendContent: _appendContent
     };
 });
