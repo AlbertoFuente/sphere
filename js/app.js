@@ -11,9 +11,13 @@ define(['topBar', 'echoContent', 'infoContent', 'services'], function(topBar, eC
 
     var _init = function() {
         var menuOptions = {
-            op1: 'Videos',
-            op2: 'Posts',
-            op3: 'Books'
+            op1: 'EchoJS',
+            op2: 'Javascript',
+            op3: 'DailyJS',
+            op4: 'FiveJS',
+            op5: 'jsRocks',
+            op6: 'FrontEndLabs',
+            op7: 'infoWorld'
         };
         // top bar
         topBar.upMenu('Sphere');
@@ -21,7 +25,6 @@ define(['topBar', 'echoContent', 'infoContent', 'services'], function(topBar, eC
         topBar.upMenu.prototype.insertMenu(menuOptions);
         // post content (echoJS)
         services.parseRSS(echoJS, eCont.echoContent);
-        services.parseRSS(infoWorld, iCont.infoContent);
     };
 
     return {
