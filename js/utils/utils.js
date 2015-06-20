@@ -23,7 +23,7 @@ define(function() {
     };
     // insert iframe
     var _appendContent = function(elem, link) {
-        elem.innerHTML = '<object type="text/html" data="' + link + '" ></object>';
+        elem.innerHTML = '<object type="text/html" data="' + link + '" id="ifrmObject"></object>';
         return elem;
     };
 
