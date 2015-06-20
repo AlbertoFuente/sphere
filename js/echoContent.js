@@ -1,4 +1,4 @@
-define(['text!../views/echoContent.html', 'utils', 'jquery'], function(html, utils, $) {
+define(['text!../views/echoContent.html', 'text!../views/errorContent.html', 'utils', 'jquery'], function(html, errorHtml, utils, $) {
     'use strict';
 
     // ===================================
@@ -73,6 +73,7 @@ define(['text!../views/echoContent.html', 'utils', 'jquery'], function(html, uti
                     $(this).addClass('selected');
                     $(this).addClass('now');
                     utils._appendContent(pContainer, link);
+
                 });
             }
         }
