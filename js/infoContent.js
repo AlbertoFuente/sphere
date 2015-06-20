@@ -3,7 +3,7 @@ define(['text!../views/infoContent.html', 'utils', 'jquery'], function(html, uti
 
     var _infoContent = function(posts) {
         console.log(posts);
-        var container = document.getElementById('infoContent');
+        var container = document.getElementById('echoContent');
 
         if (!utils._isUnd(posts) && !utils._isUnd(html)) {
             container.innerHTML = html;
