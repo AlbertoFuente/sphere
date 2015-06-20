@@ -56,7 +56,7 @@ define(['text!../views/echoContent.html', 'text!../views/errorContent.html', 'ut
 
             if (!utils._isUnd(document.getElementsByClassName('subMenuLink'))) {
                 $('.subMenuLink').click(function(ev) {
-                    $('#echoContentPanel').empty();
+                    utils._emptyContentContainer();
 
                     var panel = miniPanel.childNodes[3].childNodes,
                         link = ev.currentTarget.attributes.data.value,
@@ -73,7 +73,6 @@ define(['text!../views/echoContent.html', 'text!../views/errorContent.html', 'ut
                     $(this).addClass('selected');
                     $(this).addClass('now');
                     utils._appendContent(pContainer, link);
-
                 });
             }
         }
