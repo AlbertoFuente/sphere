@@ -6,7 +6,7 @@ define(['text!../views/echoContent.html', 'text!../views/errorContent.html', 'ut
     // ===================================
 
     var _echoContent = function(posts) {
-        var container = document.getElementById('echoContent');
+        var container = document.getElementById('container');
 
         if (!utils._isUnd(posts) && !utils._isUnd(html)) {
             container.innerHTML = html;
