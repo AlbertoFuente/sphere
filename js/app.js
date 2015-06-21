@@ -1,4 +1,4 @@
-define(['topBar', 'echoContent', 'infoContent', 'services', 'utils'], function(topBar, eCont, iCont, services, utils) {
+define(['topBar', 'echoContent', 'infoContent', 'services', 'utils', 'jquery'], function(topBar, eCont, iCont, services, utils, $) {
     'use strict';
 
     var infoWorld = 'http://www.infoworld.com/news/index.rss',
@@ -8,6 +8,7 @@ define(['topBar', 'echoContent', 'infoContent', 'services', 'utils'], function(t
         jsRocks = 'http://jsrocks.org/rss',
         frontEndLabs = 'http://frontendlabs.io/feed',
         javascript = 'https://www.javascript.com/feed/rss',
+        // INIT
         _init = function() {
             var menuOptions = {
                 op1: 'EchoJS',
