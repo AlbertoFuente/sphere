@@ -5,6 +5,7 @@ require.config({
         'services': 'js/services',
         'echoContent': 'js/echoContent',
         'infoContent': 'js/infoContent',
+        'javaContent': 'js/javaContent',
         // Plugins
         'text': 'js/plugins/text',
         // Vendor
@@ -20,6 +21,7 @@ require(['app',
         'services',
         'echoContent',
         'infoContent',
+        'javaContent',
         'text',
         'jquery',
         'utils'
