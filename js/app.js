@@ -1,19 +1,15 @@
 define([
     'topBar',
     'echoContent',
-    'infoContent',
-    'javaContent',
-    'dailyContent',
     'services',
     'utils',
     'jquery'
-], function(topBar, eCont, iCont, jaCont, dayCont, services, utils, $) {
+], function(topBar, eCont, services, utils, $) {
     'use strict';
 
     var infoWorld = 'http://www.infoworld.com/news/index.rss',
         echoJS = 'http://www.echojs.com/rss',
         dailyJS = 'http://dailyjs.com/rss/',
-        fiveJS = 'https://fivejs.codeschool.com/feed.rss',
         jsRocks = 'http://jsrocks.org/rss',
         frontEndLabs = 'http://frontendlabs.io/feed',
         javascript = 'https://www.javascript.com/feed/rss',
@@ -23,7 +19,6 @@ define([
                 op1: 'EchoJS',
                 op2: 'Javascript',
                 op3: 'DailyJS',
-                op4: 'FiveJS',
                 op5: 'jsRocks',
                 op6: 'FrontEndLabs',
                 op7: 'infoWorld'
@@ -54,24 +49,23 @@ define([
                         break;
                     case 'Javascript':
                         resetContainers();
-                        services.parseRSS(javascript, jaCont.javaContent);
+                        services.parseRSS(javascript, eCont.echoContent);
                         break;
                     case 'DailyJS':
                         resetContainers();
-                        services.parseRSS(dailyJS, dayCont.dailyContent);
-                        break;
-                    case 'FiveJS':
-                        resetContainers();
+                        services.parseRSS(dailyJS, eCont.echoContent);
                         break;
                     case 'jsRocks':
                         resetContainers();
+                        services.parseRSS(jsRocks, eCont.echoContent);
                         break;
                     case 'FrontEndLabs':
                         resetContainers();
+                        services.parseRSS(frontEndLabs, eCont.echoContent);
                         break;
                     case 'infoWorld':
                         resetContainers();
-                        services.parseRSS(infoWorld, iCont.infoContent);
+                        services.parseRSS(infoWorld, eCont.echoContent);
                         break;
                     default:
                         resetContainers();
