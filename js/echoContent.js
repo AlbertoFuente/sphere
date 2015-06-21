@@ -41,17 +41,20 @@ define(['text!../views/echoContent.html', 'text!../views/errorContent.html', 'ut
                 utils._appendArr(miniPanel, [title, link, postsContainer]);
                 container.appendChild(miniPanel);
 
-                if (miniPanel.childNodes.length > 0) {
-                    var j = 0,
-                        minLength = miniPanel.childNodes.length,
-                        firstNode = null;
-                    for (j; j < minLength; j++) {
-                        if (typeof miniPanel.childNodes[j] === 'object' && miniPanel.childNodes[j].tagName === 'DIV') {
-                            firstNode = miniPanel.childNodes[j].childNodes[0].childNodes[0].getAttribute('data');
+                window.setTimeout(function() {
+                    if (miniPanel.childNodes.length > 0) {
+                        var j = 0,
+                            minLength = miniPanel.childNodes.length,
+                            firstNode = null;
+                        for (j; j < minLength; j++) {
+                            if (typeof miniPanel.childNodes[j] === 'object' && miniPanel.childNodes[j].tagName === 'DIV') {
+                                firstNode = miniPanel.childNodes[j].childNodes[0].childNodes[0].getAttribute('data');
+                                break;
+                            }
                         }
+                        utils._appendContent(pContainer, firstNode);
                     }
-                    utils._appendContent(pContainer, firstNode);
-                }
+                }, 500);
             }
 
             if (!utils._isUnd(document.getElementsByClassName('subMenuLink'))) {
