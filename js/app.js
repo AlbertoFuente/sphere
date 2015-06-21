@@ -3,10 +3,11 @@ define([
     'echoContent',
     'infoContent',
     'javaContent',
+    'dailyContent',
     'services',
     'utils',
     'jquery'
-], function(topBar, eCont, iCont, jaCont, services, utils, $) {
+], function(topBar, eCont, iCont, jaCont, dayCont, services, utils, $) {
     'use strict';
 
     var infoWorld = 'http://www.infoworld.com/news/index.rss',
@@ -56,12 +57,17 @@ define([
                         services.parseRSS(javascript, jaCont.javaContent);
                         break;
                     case 'DailyJS':
+                        resetContainers();
+                        services.parseRSS(dailyJS, dayCont.dailyContent);
                         break;
                     case 'FiveJS':
+                        resetContainers();
                         break;
                     case 'jsRocks':
+                        resetContainers();
                         break;
                     case 'FrontEndLabs':
+                        resetContainers();
                         break;
                     case 'infoWorld':
                         resetContainers();
