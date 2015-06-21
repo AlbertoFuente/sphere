@@ -1,4 +1,4 @@
-define(['text!../views/topBar.html', 'utils'], function(html, utils) {
+define(['text!../views/topBar.html', 'utils', 'jquery'], function(html, utils, $) {
     'use strict';
 
     // ============================================
@@ -30,7 +30,9 @@ define(['text!../views/topBar.html', 'utils'], function(html, utils) {
                         var ulOpt = document.createElement('li'),
                             aOpt = document.createElement('a');
 
-                        utils._setAttr(aOpt, 'href', menuOptions[key] + '.html');
+                        utils._setAttr(aOpt, 'href', '#');
+                        aOpt.id = menuOptions[key];
+                        aOpt.className = 'topBarLink';
                         aOpt.innerHTML = menuOptions[key];
                         ulOpt.appendChild(aOpt);
                         optsUl.appendChild(ulOpt);
