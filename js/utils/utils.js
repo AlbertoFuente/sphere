@@ -1,4 +1,4 @@
-define(function() {
+define(['services'], function(services) {
     'use strict';
 
     // UNDEFINED
@@ -27,7 +27,7 @@ define(function() {
             return elem;
         },
         // Empty menu container
-        _emptyMenuConteiner = function() {
+        _emptyMenuContainer = function() {
             var miniPanel = $('#echoMiniPanel');
             miniPanel.empty();
         },
@@ -42,7 +42,7 @@ define(function() {
         _setAttr: _setAttribute,
         _appendArr: _appendArray,
         _appendContent: _appendContent,
-        _emptyMenuConteiner: _emptyMenuConteiner,
+        _emptyMenuContainer: _emptyMenuContainer,
         _emptyContentContainer: _emptyContentContainer
     };
 });
