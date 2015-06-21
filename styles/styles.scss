@@ -3,6 +3,11 @@
     border-bottom: 1px solid grey;
 }
 
+#infoContent {
+    height: 750px;
+    border-bottom: 1px solid grey;
+}
+
 .echoMenu {
     float: left;
     margin-top: 10px;
@@ -25,6 +30,32 @@
     }
 }
 
+.infoMenu {
+    float: left;
+    margin-top: 10px;
+    a {
+        color: grey;
+        font-size: 10px;
+    }
+    .infoSubMenuLink {
+        color: #2196f3;
+        font-size: 12px;
+        &:hover {
+            color: #90caf9;
+        }
+        &.selected {
+            color: #0d47a1;
+        }
+        &.now {
+            color: #e57373;
+        }
+    }
+    p {
+        color: grey;
+        font-size: 10px;
+    }
+}
+
 .postMenu {
     margin-top: 15px;
     div {
@@ -34,6 +65,20 @@
 }
 
 .echoContent {
+    left: auto;
+    right: 0;
+    position: absolute;
+    margin-top: 20px;
+    height: 700px;
+    object {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+}
+
+.infoContent {
     left: auto;
     right: 0;
     position: absolute;
