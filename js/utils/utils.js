@@ -1,4 +1,4 @@
-define(['services'], function(services) {
+define(function() {
     'use strict';
 
     // UNDEFINED
