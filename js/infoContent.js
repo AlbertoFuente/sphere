@@ -1,6 +1,10 @@
 define(['text!../views/infoContent.html', 'utils', 'jquery'], function(html, utils, $) {
     'use strict';
 
+    // ===================================
+    // INFO CONTENT
+    // ===================================
+
     var _infoContent = function(posts) {
         var container = document.getElementById('container');
 
