@@ -1,4 +1,12 @@
-define(['topBar', 'echoContent', 'infoContent', 'services', 'utils', 'jquery'], function(topBar, eCont, iCont, services, utils, $) {
+define([
+    'topBar',
+    'echoContent',
+    'infoContent',
+    'javaContent',
+    'services',
+    'utils',
+    'jquery'
+], function(topBar, eCont, iCont, jaCont, services, utils, $) {
     'use strict';
 
     var infoWorld = 'http://www.infoworld.com/news/index.rss',
@@ -33,14 +41,19 @@ define(['topBar', 'echoContent', 'infoContent', 'services', 'utils', 'jquery'], 
         },
         // TOP MENU EVENTS
         _changeChannel = function(data) {
+            function resetContainers() {
+                utils._emptyMenuContainer();
+                utils._emptyContentContainer();
+            }
             if (!utils._isUnd(data)) {
                 switch (data) {
                     case 'EchoJS':
-                        utils._emptyMenuContainer();
-                        utils._emptyContentContainer();
+                        resetContainers();
                         services.parseRSS(echoJS, eCont.echoContent);
                         break;
                     case 'Javascript':
+                        resetContainers();
+                        services.parseRSS(javascript, jaCont.javaContent);
                         break;
                     case 'DailyJS':
                         break;
@@ -51,13 +64,11 @@ define(['topBar', 'echoContent', 'infoContent', 'services', 'utils', 'jquery'], 
                     case 'FrontEndLabs':
                         break;
                     case 'infoWorld':
-                        utils._emptyMenuContainer();
-                        utils._emptyContentContainer();
+                        resetContainers();
                         services.parseRSS(infoWorld, iCont.infoContent);
                         break;
                     default:
-                        utils._emptyMenuContainer();
-                        utils._emptyContentContainer();
+                        resetContainers();
                         services.parseRSS(echoJS, eCont.echoContent);
                 }
             }
