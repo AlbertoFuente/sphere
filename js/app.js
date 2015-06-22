@@ -13,6 +13,10 @@ define([
         jsRocks = 'http://jsrocks.org/rss',
         frontEndLabs = 'http://frontendlabs.io/feed',
         javascript = 'https://www.javascript.com/feed/rss',
+        sitePoint = 'http://www.sitepoint.com/feed/',
+        telerik = 'http://developer.telerik.com/feed/',
+        danWal = 'https://weblogs.asp.net/dwahlin/rss?containerid=13',
+        cNet = 'http://www.cnet.com/rss/news/',
         // INIT
         _init = function() {
             var menuOptions = {
@@ -21,7 +25,11 @@ define([
                 op3: 'DailyJS',
                 op5: 'jsRocks',
                 op6: 'FrontEndLabs',
-                op7: 'infoWorld'
+                op7: 'infoWorld',
+                op8: 'SitePoint',
+                op9: 'Telerik',
+                op10: 'DanWahlin',
+                op11: 'cNet'
             };
             // top bar
             topBar.upMenu('Sphere');
@@ -66,6 +74,22 @@ define([
                     case 'infoWorld':
                         resetContainers();
                         services.parseRSS(infoWorld, eCont.echoContent);
+                        break;
+                    case 'SitePoint':
+                        resetContainers();
+                        services.parseRSS(sitePoint, eCont.echoContent);
+                        break;
+                    case 'Telerik':
+                        resetContainers();
+                        services.parseRSS(telerik, eCont.echoContent);
+                        break;
+                    case 'DanWahlin':
+                        resetContainers();
+                        services.parseRSS(danWal, eCont.echoContent);
+                        break;
+                    case 'cNet':
+                        resetContainers();
+                        services.parseRSS(cNet, eCont.echoContent);
                         break;
                     default:
                         resetContainers();
