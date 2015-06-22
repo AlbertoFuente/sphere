@@ -35,6 +35,9 @@ define(function() {
         _emptyContentContainer = function() {
             var contentPanel = $('#echoContentPanel');
             contentPanel.empty();
+        },
+        _createElement = function(elem) {
+            return document.createElement(elem);
         };
 
     return {
@@ -43,6 +46,7 @@ define(function() {
         _appendArr: _appendArray,
         _appendContent: _appendContent,
         _emptyMenuContainer: _emptyMenuContainer,
-        _emptyContentContainer: _emptyContentContainer
+        _emptyContentContainer: _emptyContentContainer,
+        _create: _createElement
     };
 });
