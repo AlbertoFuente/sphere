@@ -6,7 +6,7 @@ define([
     'jquery'
 ], function(topBar, eCont, services, utils, $) {
     'use strict';
-
+    // RSS
     var infoWorld = 'http://www.infoworld.com/news/index.rss',
         echoJS = 'http://www.echojs.com/rss',
         dailyJS = 'http://dailyjs.com/rss/',
@@ -75,7 +75,6 @@ define([
         };
 
     return {
-        init: _init,
-        _changeChannel: _changeChannel
+        init: _init
     };
 });

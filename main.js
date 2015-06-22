@@ -1,5 +1,6 @@
 require.config({
     paths: {
+        // modules
         'app': 'js/app',
         'topBar': 'js/topBar',
         'services': 'js/services',

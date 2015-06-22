@@ -36,12 +36,15 @@ define(function() {
             var contentPanel = $('#echoContentPanel');
             contentPanel.empty();
         },
+        // document.createElement()
         _createElement = function(elem) {
             return document.createElement(elem);
         },
+        // document.getElementById()
         _getId = function(id) {
             return document.getElementById(id);
         },
+        // document.getElementsByClassName()
         _getClass = function(cl) {
             return document.getElementsByClassName(cl);
         };
