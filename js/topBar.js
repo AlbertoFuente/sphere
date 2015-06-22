@@ -5,11 +5,10 @@ define(['text!../views/topBar.html', 'utils'], function(html, utils) {
     // TOP BAR
     // ============================================
 
-    var _title = null;
-
-    var _upMenu = function(title) {
-        _title = title;
-    };
+    var _title = null,
+        _upMenu = function(title) {
+            _title = title;
+        };
 
     if (!_upMenu.prototype.insertMenu) {
         _upMenu.prototype.insertTitle = function() {
