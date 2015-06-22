@@ -38,6 +38,12 @@ define(function() {
         },
         _createElement = function(elem) {
             return document.createElement(elem);
+        },
+        _getId = function(id) {
+            return document.getElementById(id);
+        },
+        _getClass = function(cl) {
+            return document.getElementsByClassName(cl);
         };
 
     return {
@@ -47,6 +53,8 @@ define(function() {
         _appendContent: _appendContent,
         _emptyMenuContainer: _emptyMenuContainer,
         _emptyContentContainer: _emptyContentContainer,
-        _create: _createElement
+        _create: _createElement,
+        _getId: _getId,
+        _getClass: _getClass
     };
 });
