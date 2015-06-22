@@ -1,4 +1,4 @@
-define(['jquery'], function($) {
+define(['jquery', 'utils'], function($, utils) {
     'use strict';
 
     // ===================================
@@ -19,7 +19,7 @@ define(['jquery'], function($) {
             if (queryScript)
                 head.removeChild(queryScript);
 
-            queryScript = document.createElement("script");
+            queryScript = utils._create("script");
             queryScript.src = url + separador + nomparam + "=" + callback;
 
             if (error)
