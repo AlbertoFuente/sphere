@@ -13,9 +13,9 @@ define(['text!../views/echoContent.html', 'text!../views/errorContent.html', 'ut
             var miniPanel = document.getElementById('echoMiniPanel');
 
             if (!utils._isUnd(miniPanel)) {
-                var title = document.createElement('h5'),
-                    link = document.createElement('a'),
-                    postsContainer = document.createElement('div'),
+                var title = utils._create('h5'),
+                    link = utils._create('a'),
+                    postsContainer = utils._create('div'),
                     pContainer = document.getElementById('echoContentPanel');
 
                 title.innerHTML = posts.title;
@@ -27,8 +27,8 @@ define(['text!../views/echoContent.html', 'text!../views/errorContent.html', 'ut
                     var i = 0,
                         entries = posts.entries.length;
                     for (i; i < entries; i++) {
-                        var subDiv = document.createElement('div'),
-                            subLink = document.createElement('a');
+                        var subDiv = utils._create('div'),
+                            subLink = utils._create('a');
                         utils._setAttr(subLink, 'href', '#');
                         utils._setAttr(subLink, 'data', posts.entries[i].link);
                         subLink.className = 'subMenuLink';
