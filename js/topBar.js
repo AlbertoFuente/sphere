@@ -1,4 +1,4 @@
-define(['text!../views/topBar.html', 'utils', 'jquery'], function(html, utils, $) {
+define(['text!../views/topBar.html', 'utils'], function(html, utils) {
     'use strict';
 
     // ============================================
@@ -13,22 +13,22 @@ define(['text!../views/topBar.html', 'utils', 'jquery'], function(html, utils, $
 
     if (!_upMenu.prototype.insertMenu) {
         _upMenu.prototype.insertTitle = function() {
-            var menuBar = document.getElementById('menuBar');
+            var menuBar = utils._getId('menuBar');
             menuBar.innerHTML = html.replace('title', _title);
         };
     }
 
     if (!_upMenu.prototype.insertMenu) {
         _upMenu.prototype.insertMenu = function(menuOptions) {
-            var opts = document.getElementById('menuBar');
+            var opts = utils._getId('menuBar');
 
             if (opts.childNodes.length > 0) {
-                var optsUl = document.getElementById('nav-mobile');
+                var optsUl = utils._getId('nav-mobile');
 
                 if (!utils._isUnd(optsUl))
                     Object.keys(menuOptions).map(function(key) {
-                        var ulOpt = document.createElement('li'),
-                            aOpt = document.createElement('a');
+                        var ulOpt = utils._create('li'),
+                            aOpt = utils._create('a');
 
                         utils._setAttr(aOpt, 'href', '#');
                         aOpt.id = menuOptions[key];
