@@ -15,7 +15,6 @@ define([
         javascript = 'https://www.javascript.com/feed/rss',
         sitePoint = 'http://www.sitepoint.com/feed/',
         telerik = 'http://developer.telerik.com/feed/',
-        danWal = 'https://weblogs.asp.net/dwahlin/rss?containerid=13',
         cNet = 'http://www.cnet.com/rss/news/',
         // INIT
         _init = function() {
@@ -28,8 +27,7 @@ define([
                 op7: 'infoWorld',
                 op8: 'SitePoint',
                 op9: 'Telerik',
-                op10: 'DanWahlin',
-                op11: 'cNet'
+                op10: 'cNet'
             };
             // top bar
             topBar.upMenu('Sphere');
@@ -82,10 +80,6 @@ define([
                     case 'Telerik':
                         resetContainers();
                         services.parseRSS(telerik, eCont.echoContent);
-                        break;
-                    case 'DanWahlin':
-                        resetContainers();
-                        services.parseRSS(danWal, eCont.echoContent);
                         break;
                     case 'cNet':
                         resetContainers();
