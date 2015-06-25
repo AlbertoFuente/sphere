@@ -5,20 +5,13 @@ define(['text!../views/topBar.html', 'utils'], function(html, utils) {
     // TOP BAR
     // ============================================
 
-    var _title = null,
-        _upMenu = function(title) {
-            _title = title;
-        };
+    var _insertTitle = function(title) {
+        var menuBar = utils._getId('menuBar');
+        menuBar.innerHTML = html.replace('title', title);
+    };
 
-    if (!_upMenu.prototype.insertMenu) {
-        _upMenu.prototype.insertTitle = function() {
-            var menuBar = utils._getId('menuBar');
-            menuBar.innerHTML = html.replace('title', _title);
-        };
-    }
-
-    if (!_upMenu.prototype.insertMenu) {
-        _upMenu.prototype.insertMenu = function(menuOptions) {
+    if (!_insertTitle.prototype.insertMenu) {
+        _insertTitle.prototype.insertMenu = function(menuOptions) {
             var opts = utils._getId('menuBar');
 
             if (opts.childNodes.length > 0) {
@@ -41,6 +34,6 @@ define(['text!../views/topBar.html', 'utils'], function(html, utils) {
     }
 
     return {
-        upMenu: _upMenu
+        insertTitle: _insertTitle
     };
 });
