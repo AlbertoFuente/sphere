@@ -7,15 +7,17 @@ define([
 ], function(topBar, eCont, services, utils, $) {
     'use strict';
     // RSS
-    var infoWorld = 'http://www.infoworld.com/news/index.rss',
-        echoJS = 'http://www.echojs.com/rss',
-        dailyJS = 'http://dailyjs.com/rss/',
-        jsRocks = 'http://jsrocks.org/rss',
-        frontEndLabs = 'http://frontendlabs.io/feed',
-        javascript = 'https://www.javascript.com/feed/rss',
-        sitePoint = 'http://www.sitepoint.com/feed/',
-        telerik = 'http://developer.telerik.com/feed/',
-        cNet = 'http://www.cnet.com/rss/news/',
+    var rssObj = {
+            EchoJS: 'http://www.echojs.com/rss',
+            Javascript: 'https://www.javascript.com/feed/rss',
+            DailyJS: 'http://dailyjs.com/rss/',
+            jsRocks: 'http://jsrocks.org/rss',
+            FrontEndLabs: 'http://frontendlabs.io/feed',
+            infoWorld: 'http://www.infoworld.com/news/index.rss',
+            SitePoint: 'http://www.sitepoint.com/feed/',
+            Telerik: 'http://developer.telerik.com/feed/',
+            cNet: 'http://www.cnet.com/rss/news/'
+        },
         // INIT
         _init = function() {
             var menuOptions = {
@@ -34,7 +36,7 @@ define([
             topBar.upMenu.prototype.insertTitle();
             topBar.upMenu.prototype.insertMenu(menuOptions);
             // post content (echoJS)
-            services.parseRSS(echoJS, eCont.echoContent);
+            services.parseRSS(rssObj.EchoJS, eCont.echoContent);
             // EVENTS
             $('.topBarLink').click(function() {
                 var elemId = $(this)[0].id;
@@ -48,47 +50,12 @@ define([
                 utils._emptyContentContainer();
             }
             if (!utils._isUnd(data)) {
-                switch (data) {
-                    case 'EchoJS':
+                Object.keys(rssObj).forEach(function(key) {
+                    if (key === data) {
                         resetContainers();
-                        services.parseRSS(echoJS, eCont.echoContent);
-                        break;
-                    case 'Javascript':
-                        resetContainers();
-                        services.parseRSS(javascript, eCont.echoContent);
-                        break;
-                    case 'DailyJS':
-                        resetContainers();
-                        services.parseRSS(dailyJS, eCont.echoContent);
-                        break;
-                    case 'jsRocks':
-                        resetContainers();
-                        services.parseRSS(jsRocks, eCont.echoContent);
-                        break;
-                    case 'FrontEndLabs':
-                        resetContainers();
-                        services.parseRSS(frontEndLabs, eCont.echoContent);
-                        break;
-                    case 'infoWorld':
-                        resetContainers();
-                        services.parseRSS(infoWorld, eCont.echoContent);
-                        break;
-                    case 'SitePoint':
-                        resetContainers();
-                        services.parseRSS(sitePoint, eCont.echoContent);
-                        break;
-                    case 'Telerik':
-                        resetContainers();
-                        services.parseRSS(telerik, eCont.echoContent);
-                        break;
-                    case 'cNet':
-                        resetContainers();
-                        services.parseRSS(cNet, eCont.echoContent);
-                        break;
-                    default:
-                        resetContainers();
-                        services.parseRSS(echoJS, eCont.echoContent);
-                }
+                        services.parseRSS(rssObj[key], eCont.echoContent);
+                    }
+                });
             }
         };
 
