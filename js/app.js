@@ -32,9 +32,8 @@ define([
                 op10: 'cNet'
             };
             // top bar
-            topBar.upMenu('Sphere');
-            topBar.upMenu.prototype.insertTitle();
-            topBar.upMenu.prototype.insertMenu(menuOptions);
+            topBar.insertTitle('Sphere');
+            topBar.insertTitle.prototype.insertMenu(menuOptions);
             // post content (echoJS)
             services.parseRSS(rssObj.EchoJS, eCont.echoContent);
             // EVENTS
