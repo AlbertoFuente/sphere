@@ -39,7 +39,7 @@ define(['jquery', 'utils'], function($, utils) {
                     callback(data.responseData.feed);
                 },
                 error: function(xhr) {
-                    console.log(xhr.statusText);
+                    console.error(xhr.statusText);
                 }
             });
         },
@@ -51,7 +51,7 @@ define(['jquery', 'utils'], function($, utils) {
                     callback(data);
                 },
                 error: function(xhr) {
-                    console.log(xhr.statusText);
+                    console.error(xhr.statusText);
                 }
             });
         };
