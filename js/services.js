@@ -37,12 +37,28 @@ define(['jquery', 'utils'], function($, utils) {
                 dataType: 'json',
                 success: function(data) {
                     callback(data.responseData.feed);
+                },
+                error: function(xhr) {
+                    console.log(xhr.statusText);
+                }
+            });
+        },
+        _parseOpml = function(opmlUrl, callback) {
+            $.ajax({
+                url: opmlUrl,
+                dataType: 'xml',
+                success: function(data) {
+                    callback(data);
+                },
+                error: function(xhr) {
+                    console.log(xhr.statusText);
                 }
             });
         };
 
     return {
         configCall: _configCall,
-        parseRSS: _parseRSS
+        parseRSS: _parseRSS,
+        parseOpml: _parseOpml
     };
 });
