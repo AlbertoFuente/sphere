@@ -1,4 +1,4 @@
-define(['text!../views/opmlContent.html', 'jquery', 'utils'], function(html, $, utils) {
+define(['text!../views/opmlContent.html', 'jquery', 'utils', 'services'], function(html, $, utils, services) {
     'use strict';
 
     // ===================================
@@ -20,7 +20,42 @@ define(['text!../views/opmlContent.html', 'jquery', 'utils'], function(html, $, 
             menuSubContainer = null,
             menuSubContainerList = null,
             subLi = null,
-            subLink = null;
+            subLink = null,
+            listId = null,
+            listIdChilds = null,
+            listIdChildsLen = null,
+            firstLiElement = null,
+            opmlContainer = null,
+            youtubeIframe = function(url) {
+                var iFrame = utils._create('iframe');
+                utils._setAttr(iFrame, 'width', '560');
+                utils._setAttr(iFrame, 'height', '315');
+                utils._setAttr(iFrame, 'src', url);
+                utils._setAttr(iFrame, 'frameborder', '0');
+                utils._setAttr(iFrame, 'allowfullscreen');
+                return iFrame;
+            },
+            appendInContainer = function(elements) {
+                var entries = elements.entries,
+                    j = 0,
+                    entriesLen = entries.length,
+                    videoContainer = null,
+                    videoTitle = null,
+                    videoDate = null,
+                    video = null;
+
+                for (j; j < entriesLen; j++) {
+                    videoContainer = utils._create('div');
+                    videoTitle = utils._create('h6');
+                    videoDate = utils._create('p');
+                    video = youtubeIframe(entries[j].link);
+
+                    videoTitle.innerHTML = entries[j].title;
+                    videoDate.innerHTML = entries[j].publishedDate;
+                    utils._appendArr(videoContainer, [videoTitle, videoDate, video]);
+                    opmlContainer.appendChild(videoContainer);
+                }
+            };
 
         if (!utils._isUnd(posts) && !utils._isUnd(html)) {
             container.innerHTML = html;
@@ -53,6 +88,18 @@ define(['text!../views/opmlContent.html', 'jquery', 'utils'], function(html, $, 
                     subLi.appendChild(subLink);
                     menuSubContainerList.appendChild(subLi);
                 }
+
+                window.setTimeout(function() {
+                    listId = utils._getId('menuSubContainerList');
+                    listIdChilds = listId.childNodes;
+                    listIdChildsLen = listIdChilds.length;
+                    firstLiElement = listIdChilds[0].childNodes[0].attributes['data-link'].value;
+                    opmlContainer = utils._getId('opmlContainer');
+
+                    if (!utils._isUnd(opmlContainer)) {
+                        services.parseRSS(firstLiElement, appendInContainer);
+                    }
+                }, 200);
             }
         }
     };
