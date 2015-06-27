@@ -1,10 +1,11 @@
 define([
     'topBar',
     'echoContent',
+    'opmlContent',
     'services',
     'utils',
     'jquery'
-], function(topBar, eCont, services, utils, $) {
+], function(topBar, eCont, oCont, services, utils, $) {
     'use strict';
     // RSS
     var rssObj = {
@@ -18,6 +19,7 @@ define([
             Telerik: 'http://developer.telerik.com/feed/',
             cNet: 'http://www.cnet.com/rss/news/'
         },
+        opmlUrl = 'xml/subscription_manager.xml',
         // INIT
         _init = function() {
             var menuOptions = {
@@ -36,6 +38,8 @@ define([
             topBar.insertTitle.prototype.insertMenu(menuOptions);
             // post content (echoJS)
             services.parseRSS(rssObj.EchoJS, eCont.echoContent);
+            // opml content (youtube RSS)
+            services.parseOpml(opmlUrl, oCont.opmlContent);
             // EVENTS
             $('.topBarLink').click(function() {
                 var elemId = $(this)[0].id;
@@ -44,14 +48,11 @@ define([
         },
         // TOP MENU EVENTS
         _changeChannel = function(data) {
-            function resetContainers() {
-                utils._emptyMenuContainer();
-                utils._emptyContentContainer();
-            }
             if (!utils._isUnd(data)) {
                 Object.keys(rssObj).forEach(function(key) {
                     if (key === data) {
-                        resetContainers();
+                        utils._emptyMenuContainer();
+                        utils._emptyContentContainer();
                         services.parseRSS(rssObj[key], eCont.echoContent);
                     }
                 });
