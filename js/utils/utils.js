@@ -5,6 +5,10 @@ define(function() {
     var _isUndefined = function(value) {
             return value === undefined;
         },
+        // NULL
+        _isNull = function(value) {
+            return value === null;
+        },
         // SET ATTRIBUTE
         _setAttribute = function(elem, attr, val) {
             elem.setAttribute(attr, val);
@@ -51,6 +55,7 @@ define(function() {
 
     return {
         _isUnd: _isUndefined,
+        _isNull: _isNull,
         _setAttr: _setAttribute,
         _appendArr: _appendArray,
         _appendContent: _appendContent,
