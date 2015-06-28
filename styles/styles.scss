@@ -38,3 +38,35 @@
         overflow-x: auto;
     }
 }
+
+.youVideo {
+    background-color: #e1f5fe;
+    padding-bottom: 10px !important;
+    width: 500px !important;
+    margin-right: 10px;
+    margin-top: 10px;
+    h6 {
+        color: #00b0ff;
+        font-size: 12px;
+    }
+    p {
+        color: #40c4ff;
+        font-size: 11px;
+    }
+}
+
+#menuSubContainerList {
+    a {
+        color: #2196f3;
+        font-size: 12px;
+        &:hover {
+            color: #90caf9;
+        }
+        &.selected {
+            color: #0d47a1;
+        }
+        &.now {
+            color: #e57373;
+        }
+    }
+}
