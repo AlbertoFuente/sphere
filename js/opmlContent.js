@@ -58,7 +58,7 @@ define(['text!../views/opmlContent.html', 'jquery', 'utils', 'services'], functi
                     videoDate = utils._create('p');
                     preVideo = entries[j].link.replace('watch?v=', 'embed/') + '?rel=0';
                     video = youtubeIframe(preVideo);
-                    videoContainer.className = 'col s6';
+                    videoContainer.className = 'col s6 youVideo';
                     videoTitle.innerHTML = entries[j].title;
                     videoDate.innerHTML = entries[j].publishedDate;
                     utils._appendArr(videoContainer, [videoTitle, videoDate, video]);
@@ -119,6 +119,18 @@ define(['text!../views/opmlContent.html', 'jquery', 'utils', 'services'], functi
                     var link = ev.currentTarget.attributes[2].value;
                     emptyOpmlVideoContainer();
                     services.parseRSS(link, appendInContainer);
+
+                    if (!utils._isUnd(listId) && !utils._isUnd(listIdChildsLen)) {
+                        var f = 0;
+                        for (f; f < listIdChildsLen; f++) {
+                            var links = listIdChilds[f].childNodes[0];
+                            if ($(links).hasClass('now')) {
+                                $(links).removeClass('now');
+                            }
+                        }
+                    }
+                    $(this).addClass('selected');
+                    $(this).addClass('now');
                 });
             }
         }
