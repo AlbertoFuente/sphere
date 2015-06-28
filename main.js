@@ -1,18 +1,19 @@
 require.config({
+    baseUrl: 'js',
     paths: {
         // modules
-        'app': 'js/app',
-        'topBar': 'js/topBar',
-        'services': 'js/services',
-        'echoContent': 'js/echoContent',
-        'opmlContent': 'js/opmlContent',
+        'app': 'app',
+        'topBar': 'topBar',
+        'services': 'services',
+        'echoContent': 'echoContent',
+        'opmlContent': 'opmlContent',
         // utils
-        'utils': 'js/utils/utils',
+        'utils': 'utils/utils',
         // Plugins
-        'text': 'js/plugins/text',
+        'text': 'plugins/text',
         // Vendor
-        'jquery': 'node_modules/jquery/dist/jquery.min',
-        'materialize': 'node_modules/materialize-css/bin/materialize'
+        'jquery': '../node_modules/jquery/dist/jquery.min',
+        'materialize': '../node_modules/materialize-css/bin/materialize'
     }
 });
 
