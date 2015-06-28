@@ -26,6 +26,12 @@ define(['text!../views/opmlContent.html', 'jquery', 'utils', 'services'], functi
             listIdChildsLen = null,
             firstLiElement = null,
             opmlContainer = null,
+            emptyOpmlVideoContainer = function() {
+                var vidContainer = $('#opmlVideoContainer');
+                if (!utils._isUnd(vidContainer)) {
+                    $(vidContainer).empty();
+                }
+            },
             youtubeIframe = function(url) {
                 var iFrame = utils._create('iframe');
                 utils._setAttr(iFrame, 'width', '300');
@@ -86,6 +92,7 @@ define(['text!../views/opmlContent.html', 'jquery', 'utils', 'services'], functi
                     opmlName = opmlBodyChildsAttrs[1].value;
                     opmlXmlUrl = opmlBodyChildsAttrs[3].value;
 
+                    subLink.className = 'youTubeVideo';
                     utils._setAttr(subLink, 'href', '#');
                     utils._setAttr(subLink, 'data-link', opmlXmlUrl);
 
@@ -105,7 +112,14 @@ define(['text!../views/opmlContent.html', 'jquery', 'utils', 'services'], functi
                     if (!utils._isUnd(opmlContainer)) {
                         services.parseRSS(firstLiElement, appendInContainer);
                     }
-                }, 200);
+                }, 100);
+
+                // EVENTS
+                $('.youTubeVideo').on('click', function(ev) {
+                    var link = ev.currentTarget.attributes[2].value;
+                    emptyOpmlVideoContainer();
+                    services.parseRSS(link, appendInContainer);
+                });
             }
         }
     };
