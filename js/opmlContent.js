@@ -86,14 +86,13 @@ define(['text!../views/opmlContent.html', 'jquery', 'utils', 'services'], functi
 
                 for (i; i < opmlBodyChildsLen; i++) {
                     subLi = utils._create('li');
-                    subLink = utils._create('a');
+                    subLink = utils._create('span');
 
                     opmlBodyChildsAttrs = opmlBodyChilds[i].attributes;
                     opmlName = opmlBodyChildsAttrs[1].value;
                     opmlXmlUrl = opmlBodyChildsAttrs[3].value;
 
                     subLink.className = 'youTubeVideo';
-                    utils._setAttr(subLink, 'href', '#');
                     utils._setAttr(subLink, 'data-link', opmlXmlUrl);
 
                     subLink.innerHTML = opmlName;
@@ -116,7 +115,7 @@ define(['text!../views/opmlContent.html', 'jquery', 'utils', 'services'], functi
 
                 // EVENTS
                 $('.youTubeVideo').on('click', function(ev) {
-                    var link = ev.currentTarget.attributes[2].value;
+                    var link = ev.currentTarget.attributes[1].value;
                     emptyOpmlVideoContainer();
                     services.parseRSS(link, appendInContainer);
 
