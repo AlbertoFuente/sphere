@@ -56,9 +56,10 @@
 }
 
 #menuSubContainerList {
-    a {
+    span {
         color: #2196f3;
         font-size: 12px;
+        cursor: pointer;
         &:hover {
             color: #90caf9;
         }
