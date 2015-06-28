@@ -28,11 +28,11 @@ define(['text!../views/opmlContent.html', 'jquery', 'utils', 'services'], functi
             opmlContainer = null,
             youtubeIframe = function(url) {
                 var iFrame = utils._create('iframe');
-                utils._setAttr(iFrame, 'width', '560');
-                utils._setAttr(iFrame, 'height', '315');
+                utils._setAttr(iFrame, 'width', '300');
+                utils._setAttr(iFrame, 'height', '160');
                 utils._setAttr(iFrame, 'src', url);
                 utils._setAttr(iFrame, 'frameborder', '0');
-                utils._setAttr(iFrame, 'allowfullscreen');
+                utils._setAttr(iFrame, 'allowfullscreen', '');
                 return iFrame;
             },
             appendInContainer = function(elements) {
@@ -42,18 +42,24 @@ define(['text!../views/opmlContent.html', 'jquery', 'utils', 'services'], functi
                     videoContainer = null,
                     videoTitle = null,
                     videoDate = null,
-                    video = null;
+                    preVideo = null,
+                    video = null,
+                    parentContainer = utils._getId('opmlVideoContainer');
 
                 for (j; j < entriesLen; j++) {
                     videoContainer = utils._create('div');
                     videoTitle = utils._create('h6');
                     videoDate = utils._create('p');
-                    video = youtubeIframe(entries[j].link);
-
+                    preVideo = entries[j].link.replace('watch?v=', 'embed/') + '?rel=0';
+                    video = youtubeIframe(preVideo);
+                    videoContainer.className = 'col s6';
                     videoTitle.innerHTML = entries[j].title;
                     videoDate.innerHTML = entries[j].publishedDate;
                     utils._appendArr(videoContainer, [videoTitle, videoDate, video]);
-                    opmlContainer.appendChild(videoContainer);
+
+                    if (!utils._isUnd(parentContainer)) {
+                        parentContainer.appendChild(videoContainer);
+                    }
                 }
             };
 
