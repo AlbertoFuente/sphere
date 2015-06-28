@@ -54,7 +54,7 @@ define(['text!../views/echoContent.html', 'text!../views/errorContent.html', 'ut
                         }
                         utils._appendContent(pContainer, firstNode);
                     }
-                }, 500);
+                }, 100);
             }
 
             if (!utils._isUnd(utils._getClass('subMenuLink'))) {
