@@ -32,15 +32,6 @@ define(['text!../views/opmlContent.html', 'jquery', 'utils', 'services'], functi
                     $(vidContainer).empty();
                 }
             },
-            youtubeIframe = function(url) {
-                var iFrame = utils._create('iframe');
-                utils._setAttr(iFrame, 'width', '300');
-                utils._setAttr(iFrame, 'height', '160');
-                utils._setAttr(iFrame, 'src', url);
-                utils._setAttr(iFrame, 'frameborder', '0');
-                utils._setAttr(iFrame, 'allowfullscreen', '');
-                return iFrame;
-            },
             appendInContainer = function(elements) {
                 var entries = elements.entries,
                     j = 0,
@@ -57,7 +48,7 @@ define(['text!../views/opmlContent.html', 'jquery', 'utils', 'services'], functi
                     videoTitle = utils._create('h6');
                     videoDate = utils._create('p');
                     preVideo = entries[j].link.replace('watch?v=', 'embed/') + '?rel=0';
-                    video = youtubeIframe(preVideo);
+                    video = utils._youtubeIfrm(preVideo);
                     videoContainer.className = 'col s6 youVideo';
                     videoTitle.innerHTML = entries[j].title;
                     videoDate.innerHTML = entries[j].publishedDate;
