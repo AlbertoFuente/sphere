@@ -51,6 +51,16 @@ define(function() {
         // document.getElementsByClassName()
         _getClass = function(cl) {
             return document.getElementsByClassName(cl);
+        },
+        // youtube iframe
+        _youtubeIframe = function(url) {
+            var iFrame = _createElement('iframe');
+            _setAttribute(iFrame, 'width', '300');
+            _setAttribute(iFrame, 'height', '160');
+            _setAttribute(iFrame, 'src', url);
+            _setAttribute(iFrame, 'frameborder', '0');
+            _setAttribute(iFrame, 'allowfullscreen', '');
+            return iFrame;
         };
 
     return {
@@ -63,6 +73,7 @@ define(function() {
         _emptyContentContainer: _emptyContentContainer,
         _create: _createElement,
         _getId: _getId,
-        _getClass: _getClass
+        _getClass: _getClass,
+        _youtubeIfrm: _youtubeIframe
     };
 });
