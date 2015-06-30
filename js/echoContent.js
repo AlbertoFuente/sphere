@@ -6,17 +6,26 @@ define(['text!../views/echoContent.html', 'text!../views/errorContent.html', 'ut
     // ===================================
 
     var _echoContent = function(posts) {
-        var container = utils._getId('container');
+        var container = utils._getId('container'),
+            miniPanel = null,
+            title = null,
+            link = null,
+            postsContainer = null,
+            pContainer = null,
+            i = 0,
+            entries = null,
+            subDiv = null,
+            subLink = null;
 
         if (!utils._isUnd(posts) && !utils._isUnd(html)) {
             container.innerHTML = html;
-            var miniPanel = utils._getId('echoMiniPanel');
+            miniPanel = utils._getId('echoMiniPanel');
 
             if (!utils._isUnd(miniPanel)) {
-                var title = utils._create('h5'),
-                    link = utils._create('a'),
-                    postsContainer = utils._create('div'),
-                    pContainer = utils._getId('echoContentPanel');
+                title = utils._create('h5');
+                link = utils._create('a');
+                postsContainer = utils._create('div');
+                pContainer = utils._getId('echoContentPanel');
 
                 title.innerHTML = posts.title;
                 utils._setAttr(link, 'href', posts.link + '.html');
@@ -24,11 +33,10 @@ define(['text!../views/echoContent.html', 'text!../views/errorContent.html', 'ut
                 postsContainer.className = 'postMenu';
 
                 if (!utils._isUnd(posts.entries) && posts.entries.length > 0) {
-                    var i = 0,
-                        entries = posts.entries.length;
+                    entries = posts.entries.length;
                     for (i; i < entries; i++) {
-                        var subDiv = utils._create('div'),
-                            subLink = utils._create('a');
+                        subDiv = utils._create('div');
+                        subLink = utils._create('a');
                         utils._setAttr(subLink, 'href', '#');
                         utils._setAttr(subLink, 'data', posts.entries[i].link);
                         subLink.className = 'subMenuLink';
@@ -58,16 +66,17 @@ define(['text!../views/echoContent.html', 'text!../views/errorContent.html', 'ut
             }
 
             if (!utils._isUnd(utils._getClass('subMenuLink'))) {
-                $('.subMenuLink').click(function(ev) {
+                $('.subMenuLink').on('click', function(ev) {
                     utils._emptyContentContainer();
 
                     var panel = miniPanel.childNodes[3].childNodes,
-                        link = ev.currentTarget.attributes.data.value,
+                        currentLink = ev.currentTarget.attributes.data.value,
                         i = 0,
-                        panelLength = panel.length;
+                        panelLength = panel.length,
+                        links = null;
 
                     for (i; i < panelLength; i++) {
-                        var links = panel[i].childNodes[0];
+                        links = panel[i].childNodes[0];
                         if ($(links).hasClass('now')) {
                             $(links).removeClass('now');
                         }
@@ -75,7 +84,7 @@ define(['text!../views/echoContent.html', 'text!../views/errorContent.html', 'ut
 
                     $(this).addClass('selected');
                     $(this).addClass('now');
-                    utils._appendContent(pContainer, link);
+                    utils._appendContent(pContainer, currentLink);
                 });
             }
         }
