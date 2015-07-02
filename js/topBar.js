@@ -1,4 +1,4 @@
-define(['text!../views/topBar.html', 'utils'], function(html, utils) {
+define('topBar', ['text!../views/topBar.html', 'utils'], function(html, utils) {
     'use strict';
 
     // ============================================

@@ -1,4 +1,4 @@
-define([
+define('app', [
     'topBar',
     'echoContent',
     'opmlContent',

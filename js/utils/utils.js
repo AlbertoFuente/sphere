@@ -1,4 +1,4 @@
-define(function() {
+define('utils', function() {
     'use strict';
 
     // UNDEFINED
