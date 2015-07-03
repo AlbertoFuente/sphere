@@ -1,5 +1,4 @@
 node_modules/
 js/plugins/
-js/sphere.min.js
+script/sphere.min.js
 styles/styles.min.css
-xml/
