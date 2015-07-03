@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify');
 
-gulp.task('default', function() {
+gulp.task('sass', function() {
     gulp.src('styles/styles.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(minifyCSS({
@@ -17,24 +17,25 @@ gulp.task('default', function() {
 
 gulp.task('js', function() {
     gulp.src([
+            'js/plugins/text.js',
             'js/utils/utils.js',
             'js/app.js',
             'js/echoContent.js',
             'js/opmlContent.js',
             'js/services.js',
             'js/topBar.js',
-            'main.js'
+            'js/main.js'
         ])
         .pipe(concat('sphere.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('js/'));
+        .pipe(gulp.dest('script/'));
 });
 
 gulp.task('watch', function() {
     gulp.watch([
         'styles/styles.scss'
     ], function() {
-        gulp.start('default');
+        gulp.start('sass');
     });
 
     gulp.watch([
@@ -44,7 +45,7 @@ gulp.task('watch', function() {
         'js/opmlContent.js',
         'js/services.js',
         'js/topBar.js',
-        'main.js'
+        'js/main.js'
     ], function() {
         gulp.start('js');
     });
