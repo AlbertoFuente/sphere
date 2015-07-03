@@ -1,5 +1,4 @@
 require.config({
-    baseUrl: 'js',
     paths: {
         // modules
         'app': 'app',
@@ -8,9 +7,9 @@ require.config({
         'echoContent': 'echoContent',
         'opmlContent': 'opmlContent',
         // utils
-        'utils': 'utils/utils',
+        'utils': 'utils',
         // Plugins
-        'text': 'plugins/text',
+        'text': 'text',
         // Vendor
         'jquery': '../node_modules/jquery/dist/jquery.min',
         'materialize': '../node_modules/materialize-css/bin/materialize'
