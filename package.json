@@ -23,7 +23,16 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.0.1",
     "gulp-uglify": "^1.2.0",
-    "gulp-watch": "^4.2.4"
+    "gulp-watch": "^4.2.4",
+    "jasmine": "^2.3.1",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.12.37",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-jasmine": "^0.3.6",
+    "karma-opera-launcher": "^0.2.0",
+    "karma-safari-launcher": "^0.1.1",
+    "karma-spec-reporter": "0.0.19"
   },
   "devDependencies": {
     "jquery": "^2.1.4",
