@@ -3,7 +3,9 @@ var gulp = require('gulp'),
     minifyCSS = require('gulp-minify-css'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    karma = require('gulp-karma'),
+    testFiles = ['script/sphere.min.js', 'spec/tests.js'];
 
 gulp.task('sass', function() {
     gulp.src('styles/styles.scss')
@@ -29,6 +31,15 @@ gulp.task('js', function() {
         .pipe(concat('sphere.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('script/'));
+
+    gulp.src(testFiles)
+        .pipe(karma({
+            configFile: 'karma.conf.js',
+            action: 'run'
+        }))
+        .on('error', function(err) {
+            throw err;
+        });
 });
 
 gulp.task('watch', function() {
