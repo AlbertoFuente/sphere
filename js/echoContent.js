@@ -1,4 +1,4 @@
-define('echoContent', ['text!../views/echoContent.html', 'text!../views/errorContent.html', 'utils', 'jquery'], function(html, errorHtml, utils, $) {
+define('echoContent', ['text!/views/echoContent.html', 'text!../views/errorContent.html', 'utils', 'jquery'], function(html, errorHtml, utils, $) {
     'use strict';
 
     // ===================================

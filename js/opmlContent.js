@@ -1,4 +1,4 @@
-define('opmlContent', ['text!../views/opmlContent.html', 'jquery', 'utils', 'services'], function(html, $, utils, services) {
+define('opmlContent', ['text!/views/opmlContent.html', 'jquery', 'utils', 'services'], function(html, $, utils, services) {
     'use strict';
 
     // ===================================
