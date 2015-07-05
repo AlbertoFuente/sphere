@@ -21,6 +21,12 @@ module.exports = function(config) {
             }, {
                 pattern: 'script/*.js',
                 included: false
+            }, {
+                pattern: 'views/*.html',
+                included: false
+            }, {
+                pattern: 'node_modules/jquery/dist/jquery.min.js',
+                included: false
             }
         ],
 
