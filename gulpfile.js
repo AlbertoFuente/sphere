@@ -8,6 +8,7 @@ var gulp = require('gulp'),
     testFiles = ['script/sphere.min.js', 'spec/tests.js'];
 
 gulp.task('sass', function() {
+    'use strict';
     gulp.src('styles/styles.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(minifyCSS({
@@ -18,6 +19,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('js', function() {
+    'use strict';
     gulp.src([
             'js/plugins/text.js',
             'js/utils/utils.js',
@@ -43,6 +45,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('watch', function() {
+    'use strict';
     gulp.watch([
         'styles/styles.scss'
     ], function() {
