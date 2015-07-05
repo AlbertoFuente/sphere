@@ -9,6 +9,7 @@ Object.keys(window.__karma__.files).forEach(function(file) {
         // then do not normalize the paths
         var normalizedTestModule = file.replace(/^\/base\/|\.js$/g, '');
         allTestFiles.push(normalizedTestModule);
+        console.log(allTestFiles);
     }
 });
 
@@ -18,7 +19,7 @@ require.config({
 
     // add text! plugin
     paths: {
-        text: '/js/plugins/text'
+        text: '/plugins/text'
     },
 
     // dynamically load all test files

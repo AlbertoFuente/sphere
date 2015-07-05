@@ -7,7 +7,7 @@ define(['app',
 ], function(app, utils, opml, echo, services, topBar) {
     'use strict';
 
-    it('prueba', function() {
+    it('Init App', function() {
         beforeEach(function() {
             spyOn(app, 'init').andCallThrough();
             console.log(app);
