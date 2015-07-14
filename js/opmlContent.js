@@ -1,4 +1,4 @@
-define('opmlContent', ['text!/views/opmlContent.html', 'jquery', 'utils', 'services'], function(html, $, utils, services) {
+define('opmlContent', ['text!../views/opmlContent.html', 'jquery', 'utils', 'services'], function(html, $, utils, services) {
     'use strict';
 
     // ===================================
@@ -59,6 +59,7 @@ define('opmlContent', ['text!/views/opmlContent.html', 'jquery', 'utils', 'servi
                     }
                 }
             };
+
         if (!utils._isUnd(posts) && !utils._isUnd(html)) {
             container.innerHTML = html;
 
