@@ -1,4 +1,4 @@
-define('echoContent', ['text!/views/echoContent.html', 'utils', 'jquery'], function(html, errorHtml, utils, $) {
+define('echoContent', ['text!/views/echoContent.html', 'utils', 'jquery'], function(html, utils, $) {
     'use strict';
 
     // ===================================
@@ -6,6 +6,7 @@ define('echoContent', ['text!/views/echoContent.html', 'utils', 'jquery'], funct
     // ===================================
 
     var _echoContent = function(posts) {
+
         var container = utils._getId('container'),
             miniPanel = null,
             title = null,

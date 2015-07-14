@@ -59,7 +59,6 @@ define('opmlContent', ['text!/views/opmlContent.html', 'jquery', 'utils', 'servi
                     }
                 }
             };
-
         if (!utils._isUnd(posts) && !utils._isUnd(html)) {
             container.innerHTML = html;
 
