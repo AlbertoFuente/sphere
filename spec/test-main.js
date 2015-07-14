@@ -3,6 +3,7 @@ var TEST_REGEXP = /(spec|test)\.js$/i;
 
 // Get a list of all the test files to include
 Object.keys(window.__karma__.files).forEach(function(file) {
+    'use strict';
     if (TEST_REGEXP.test(file)) {
         // Normalize paths to RequireJS module names.
         // If you require sub-dependencies of test files to be loaded as-is (requiring file extension)
@@ -15,11 +16,11 @@ Object.keys(window.__karma__.files).forEach(function(file) {
 
 require.config({
     // Karma serves files under /base, which is the basePath from your config file
-    baseUrl: '/base/js',
+    baseUrl: '/base/script',
 
     // add text! plugin
     paths: {
-        text: '/plugins/text'
+        text: '../js/plugins/text'
     },
 
     // dynamically load all test files
