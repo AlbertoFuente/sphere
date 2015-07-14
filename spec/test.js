@@ -10,7 +10,6 @@ define(['app',
     it('Init App', function() {
         beforeEach(function() {
             spyOn(app, 'init').andCallThrough();
-            console.log(app);
         });
 
         it("APP should be able to initialize", function() {
