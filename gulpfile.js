@@ -21,7 +21,6 @@ gulp.task('sass', function() {
 gulp.task('js', function() {
     'use strict';
     gulp.src([
-            'js/plugins/text.js',
             'js/utils/utils.js',
             'js/app.js',
             'js/echoContent.js',
