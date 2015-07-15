@@ -1,4 +1,4 @@
-define('topBar', ['text!../views/topBar.html', 'utils'], function(html, utils) {
+define('topBar', ['utils'], function(utils) {
     'use strict';
 
     // ============================================
@@ -6,8 +6,8 @@ define('topBar', ['text!../views/topBar.html', 'utils'], function(html, utils) {
     // ============================================
 
     var _insertTitle = function(title) {
-        var menuBar = utils._getId('menuBar');
-        menuBar.innerHTML = html.replace('title', title);
+        var menuBarTitle = utils._getClass('brand-logo');
+        menuBarTitle[0].innerHTML = title;
     };
 
     if (!_insertTitle.prototype.insertMenu) {
