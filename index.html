@@ -8,8 +8,25 @@
     <script src="node_modules/requirejs/require.js" type="text/javascript" data-main="script/sphere.min"></script>
 </head>
 <body>
-    <nav id="menuBar"></nav>
-    <div class="row" id="container"></div>
-    <div class="row" id="opmlContainer"></div>
+    <nav id="menuBar">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo"></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
+        </div>
+    </nav>
+    <div class="row" id="container">
+        <div class="row">
+         <div class="col s2 echoMenu" id="echoMiniPanel">
+         </div>
+         <div class="col s10 echoContent" id="echoContentPanel">
+        </div>
+</div>
+    </div>
+    <div class="row" id="opmlContainer">
+        <div class="opmlContent">
+            <div class="col s2 opmlMenu" id="opmlMenu"></div>
+            <div class="col s10 opmlContent" id="opmlVideoContainer"></div>
+        </div>
+    </div>
 </body>
 </html>
