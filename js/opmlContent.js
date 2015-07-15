@@ -1,4 +1,4 @@
-define('opmlContent', ['text!../views/opmlContent.html', 'jquery', 'utils', 'services'], function(html, $, utils, services) {
+define('opmlContent', ['jquery', 'utils', 'services'], function($, utils, services) {
     'use strict';
 
     // ===================================
@@ -60,9 +60,7 @@ define('opmlContent', ['text!../views/opmlContent.html', 'jquery', 'utils', 'ser
                 }
             };
 
-        if (!utils._isUnd(posts) && !utils._isUnd(html)) {
-            container.innerHTML = html;
-
+        if (!utils._isUnd(posts)) {
             if (!utils._isNull(opmlTitle) && !utils._isUnd(menuPanel)) {
                 menuPanel = utils._getId('opmlMenu');
                 titleContainer = (!utils._isUnd(menuPanel)) ? utils._create('h5') : null;
