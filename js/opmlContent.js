@@ -6,8 +6,7 @@ define('opmlContent', ['jquery', 'utils', 'services'], function($, utils, servic
     // ===================================
 
     var _opmlContent = function(posts) {
-        var container = utils._getId('opmlContainer'),
-            opmlTitle = posts.childNodes[0].childNodes[1].childNodes[0].attributes.text.value,
+        var opmlTitle = posts.childNodes[0].childNodes[1].childNodes[0].attributes.text.value,
             opmlBody = posts.childNodes[0].childNodes[1],
             opmlBodyChilds = opmlBody.childNodes[0].childNodes,
             opmlBodyChildsLen = opmlBodyChilds.length,
