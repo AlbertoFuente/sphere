@@ -10,18 +10,15 @@ Object.keys(window.__karma__.files).forEach(function(file) {
         // then do not normalize the paths
         var normalizedTestModule = file.replace(/^\/base\/|\.js$/g, '');
         allTestFiles.push(normalizedTestModule);
-        console.log(allTestFiles);
     }
 });
 
 require.config({
     // Karma serves files under /base, which is the basePath from your config file
-    baseUrl: '/base/script',
+    baseUrl: 'base/script',
 
     // add text! plugin
-    paths: {
-        text: '../js/plugins/text'
-    },
+    paths: {},
 
     // dynamically load all test files
     deps: allTestFiles,
