@@ -18,12 +18,6 @@ module.exports = function(config) {
             '../tests/test-main.js', {
                 pattern: '../tests/tests.js',
                 included: false
-            }, {
-                pattern: '../views/*.html',
-                included: false
-            }, {
-                pattern: '../node_modules/jquery/dist/jquery.min.js',
-                included: false
             }
         ],
 
