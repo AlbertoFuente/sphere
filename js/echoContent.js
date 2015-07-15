@@ -1,4 +1,4 @@
-define('echoContent', ['text!../views/echoContent.html', 'utils', 'jquery'], function(html, utils, $) {
+define('echoContent', ['utils', 'jquery'], function(utils, $) {
     'use strict';
 
     // ===================================
@@ -17,8 +17,7 @@ define('echoContent', ['text!../views/echoContent.html', 'utils', 'jquery'], fun
             subDiv = null,
             subLink = null;
 
-        if (!utils._isUnd(posts) && !utils._isUnd(html)) {
-            container.innerHTML = html;
+        if (!utils._isUnd(posts)) {
             miniPanel = utils._getId('echoMiniPanel');
 
             if (!utils._isUnd(miniPanel)) {
@@ -69,7 +68,7 @@ define('echoContent', ['text!../views/echoContent.html', 'utils', 'jquery'], fun
                 $('.subMenuLink').on('click', function(ev) {
                     utils._emptyContentContainer();
 
-                    var panel = miniPanel.childNodes[3].childNodes,
+                    var panel = miniPanel.childNodes[2].childNodes,
                         currentLink = ev.currentTarget.attributes.data.value,
                         i = 0,
                         panelLength = panel.length,
