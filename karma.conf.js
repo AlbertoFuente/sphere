@@ -18,6 +18,9 @@ module.exports = function(config) {
             '../tests/test-main.js', {
                 pattern: '../tests/tests.js',
                 included: false
+            }, {
+                pattern: 'script/sphere.min.js',
+                included: false
             }
         ],
 
@@ -56,7 +59,7 @@ module.exports = function(config) {
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['Chrome', 'Safari', 'Firefox'],
+        browsers: ['Chrome', 'Firefox'],
 
 
         // Continuous Integration mode
