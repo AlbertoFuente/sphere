@@ -3,9 +3,8 @@ define('app', [
     'echoContent',
     'opmlContent',
     'services',
-    'utils',
-    'jquery'
-], function(topBar, eCont, oCont, services, utils, $) {
+    'utils'
+], function(topBar, eCont, oCont, services, utils) {
     'use strict';
     // RSS
     var rssObj = {
