@@ -1,4 +1,4 @@
-define('opmlContent', ['jquery', 'utils', 'services'], function($, utils, services) {
+define('opmlContent', ['utils', 'services'], function(utils, services) {
     'use strict';
 
     // ===================================
