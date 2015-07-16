@@ -1,4 +1,4 @@
-define('services', ['jquery', 'utils'], function($, utils) {
+define('services', ['utils'], function(utils) {
     'use strict';
 
     // ===================================
