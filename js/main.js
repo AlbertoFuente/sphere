@@ -7,19 +7,17 @@ require.config({
         'echoContent': 'echoContent',
         'opmlContent': 'opmlContent',
         // utils
-        'utils': 'utils',
-        // Vendor
-        'jquery': '/node_modules/jquery/dist/jquery.min'
+        'utils': 'utils'
     },
     callback: function() {
         'use strict';
-        require(['app',
+        require([
+                'app',
                 'topBar',
                 'services',
                 'echoContent',
                 'opmlContent',
-                'utils',
-                'jquery'
+                'utils'
             ],
             function(app) {
                 app.init();
