@@ -1,4 +1,4 @@
-define('echoContent', ['utils', 'jquery'], function(utils, $) {
+define('echoContent', ['utils'], function(utils) {
     'use strict';
 
     // ===================================
