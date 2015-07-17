@@ -6,8 +6,8 @@ define('topBar', ['utils'], function(utils) {
     // ============================================
 
     var _insertTitle = function(title) {
-        var menuBarTitle = utils._getClass('brand-logo') || null;
-        menuBarTitle[0].innerHTML = title;
+        var menuBarTitle = (utils._getClass('brand-logo') !== undefined) ? utils._getClass('brand-logo')[0] : null;
+        menuBarTitle.innerHTML = title;
     };
 
     if (!_insertTitle.prototype.insertMenu) {
