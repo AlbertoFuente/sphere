@@ -6,7 +6,7 @@ define('topBar', ['utils'], function(utils) {
     // ============================================
 
     var _insertTitle = function(title) {
-        var menuBarTitle = utils._getClass('brand-logo');
+        var menuBarTitle = utils._getClass('brand-logo') || null;
         menuBarTitle[0].innerHTML = title;
     };
 
