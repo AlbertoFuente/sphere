@@ -15,24 +15,24 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [{
-            pattern: 'index.html',
-            included: true,
-            watched: true,
-            served: true
-        }, {
-            pattern: 'spec/*.js',
-            included: false
-        }, {
-            pattern: 'script/sphere.min.js',
-            included: false
-        }, {
             pattern: 'node_modules/jquery/dist/jquery.min.js',
             included: false
-        }, 'spec/test-main.js'],
+        }, {
+            pattern: 'js/**/*.js',
+            included: false
+        }, {
+            pattern: 'js/*.js',
+            included: false
+        }, {
+            pattern: 'tests/**/*Spec.js',
+            included: false
+        }, 'tests/test-main.js'],
 
 
         // list of files to exclude
-        exclude: [],
+        exclude: [
+            'js/main.js'
+        ],
 
 
         // preprocess matching files before serving them to the browser
@@ -60,13 +60,15 @@ module.exports = function(config) {
 
 
         // enable / disable watching file and executing tests whenever any file changes
-        autoWatch: false,
+        autoWatch: true,
 
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         browsers: ['Chrome', 'Firefox'],
 
+        // If browser does not capture in given timeout [ms], kill it
+        captureTimeout: 60000,
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
