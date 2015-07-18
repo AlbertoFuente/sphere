@@ -7,7 +7,9 @@ require.config({
         'echoContent': 'echoContent',
         'opmlContent': 'opmlContent',
         // utils
-        'utils': 'utils'
+        'utils': 'utils/utils',
+        // vendor
+        'jquery': '../node_modules/jquery/dist/jquery.min'
     },
     callback: function() {
         'use strict';
@@ -17,7 +19,8 @@ require.config({
                 'services',
                 'echoContent',
                 'opmlContent',
-                'utils'
+                'utils',
+                'jquery'
             ],
             function(app) {
                 app.init();
