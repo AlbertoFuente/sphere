@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     karma = require('gulp-karma'),
-    testFiles = ['script/sphere.min.js', 'spec/tests.js'];
+    testFiles = ['js/app', 'spec/tests.js'];
 
 gulp.task('sass', function() {
     'use strict';
@@ -26,21 +26,20 @@ gulp.task('js', function() {
             'js/echoContent.js',
             'js/opmlContent.js',
             'js/services.js',
-            'js/topBar.js',
-            'js/main.js'
+            'js/topBar.js'
         ])
         .pipe(concat('sphere.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('script/'));
 
-    gulp.src(testFiles)
+    /*gulp.src(testFiles)
         .pipe(karma({
             configFile: 'karma.conf.js',
             action: 'run'
         }))
         .on('error', function(err) {
             throw err;
-        });
+        });*/
 });
 
 gulp.task('watch', function() {
