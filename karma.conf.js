@@ -18,6 +18,9 @@ module.exports = function(config) {
             pattern: 'node_modules/jquery/dist/jquery.min.js',
             included: false
         }, {
+            pattern: 'xml/subscription_manager.xml',
+            included: false
+        }, {
             pattern: 'js/**/*.js',
             included: false
         }, {
