@@ -32,14 +32,14 @@ gulp.task('js', function() {
         .pipe(uglify())
         .pipe(gulp.dest('script/'));
 
-    /*gulp.src(testFiles)
+    gulp.src(testFiles)
         .pipe(karma({
             configFile: 'karma.conf.js',
             action: 'run'
         }))
         .on('error', function(err) {
             throw err;
-        });*/
+        });
 });
 
 gulp.task('watch', function() {
