@@ -7,7 +7,7 @@ for (var file in window.__karma__.files) {
 
 require.config({
     // Karma serves files under /base, which is the basePath from your config file
-    baseUrl: '',
+    baseUrl: '/base',
 
     // add text! plugin
     paths: {
