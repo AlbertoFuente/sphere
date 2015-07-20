@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     karma = require('gulp-karma'),
-    testFiles = ['js/app', 'spec/tests.js'];
+    testFiles = ['spec/test-main.js', 'spec/tests.js'];
 
 gulp.task('sass', function() {
     'use strict';
@@ -26,7 +26,8 @@ gulp.task('js', function() {
             'js/echoContent.js',
             'js/opmlContent.js',
             'js/services.js',
-            'js/topBar.js'
+            'js/topBar.js',
+            'js/main.js'
         ])
         .pipe(concat('sphere.min.js'))
         .pipe(uglify())
