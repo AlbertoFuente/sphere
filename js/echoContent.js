@@ -46,7 +46,6 @@ define('echoContent', ['utils', 'jquery'], function(utils, $) {
                     }
                 }
                 utils._appendArr(miniPanel, [title, link, postsContainer]);
-                container.appendChild(miniPanel);
 
                 window.setTimeout(function() {
                     if (miniPanel.childNodes.length > 0) {
