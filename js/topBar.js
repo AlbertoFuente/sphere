@@ -17,7 +17,7 @@ define('topBar', ['utils'], function(utils) {
             if (opts.childNodes.length > 0) {
                 var optsUl = utils._getId('nav-mobile');
 
-                if (!utils._isUnd(optsUl))
+                if (!utils._isUnd(optsUl)) {
                     Object.keys(menuOptions).map(function(key) {
                         var ulOpt = utils._create('li'),
                             aOpt = utils._create('a');
@@ -29,6 +29,7 @@ define('topBar', ['utils'], function(utils) {
                         ulOpt.appendChild(aOpt);
                         optsUl.appendChild(ulOpt);
                     });
+                }
             }
         };
     }
