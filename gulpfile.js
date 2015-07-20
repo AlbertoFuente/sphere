@@ -58,7 +58,8 @@ gulp.task('watch', function() {
         'js/opmlContent.js',
         'js/services.js',
         'js/topBar.js',
-        'js/main.js'
+        'js/main.js',
+        'tests/appSpec.js'
     ], function() {
         gulp.start('js');
     });
