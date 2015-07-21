@@ -4,9 +4,8 @@ define([
     'utils',
     'services',
     'echoContent',
-    'opmlContent',
-    'jquery'
-], function(app, topBar, utils, services, eCont, oCont, $) {
+    'opmlContent'
+], function(app, topBar, utils, services, eCont, oCont) {
     'use strict';
 
     describe('Check Sphere App', function() {
@@ -84,6 +83,7 @@ define([
 
         it('Test services parseOpml function', function() {
             services.parseOpml(opmlUrl, oCont.opmlContent);
+            //expect(opmlMenu.childNodes.length).toBeGreaterThan(1);
         });
     });
 });
