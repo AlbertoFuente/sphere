@@ -1,4 +1,12 @@
-define(['app', 'topBar', 'utils', 'services', 'echoContent'], function(app, topBar, utils, services, eCont) {
+define([
+    'app',
+    'topBar',
+    'utils',
+    'services',
+    'echoContent',
+    'opmlContent',
+    'jquery'
+], function(app, topBar, utils, services, eCont, oCont, $) {
     'use strict';
 
     describe('Check Sphere App', function() {
@@ -9,6 +17,10 @@ define(['app', 'topBar', 'utils', 'services', 'echoContent'], function(app, topB
             echoMiniPanel = utils._create('div'),
             echoContentPanel = utils._create('div'),
             rowContainer = utils._create('div'),
+            opmlContainer = utils._create('div'),
+            opmlContent = utils._create('div'),
+            opmlMenu = utils._create('div'),
+            opmlVideo = utils._create('div'),
             menuOptions = {
                 op1: 'EchoJS',
                 op2: 'Javascript',
@@ -23,7 +35,8 @@ define(['app', 'topBar', 'utils', 'services', 'echoContent'], function(app, topB
             },
             rssObj = {
                 EchoJS: 'http://www.echojs.com/rss'
-            };
+            },
+            opmlUrl = 'xml/subscription_manager.xml';
 
         utils._setAttr(logo, 'class', 'brand-logo');
         utils._setAttr(navContainer, 'id', 'menuBar');
@@ -32,6 +45,10 @@ define(['app', 'topBar', 'utils', 'services', 'echoContent'], function(app, topB
         utils._setAttr(echoMiniPanel, 'id', 'echoMiniPanel');
         utils._setAttr(echoContentPanel, 'id', 'echoContentPanel');
         utils._setAttr(rowContainer, 'class', 'row');
+        utils._setAttr(opmlContainer, 'id', 'opmlContainer');
+        utils._setAttr(opmlContent, 'class', 'opmlContent');
+        utils._setAttr(opmlMenu, 'id', 'opmlMenu');
+        utils._setAttr(opmlVideo, 'id', 'opmlVideoContainer');
 
         window.document.body.appendChild(navContainer);
         utils._appendArr(navContainer, [logo, options]);
@@ -39,6 +56,10 @@ define(['app', 'topBar', 'utils', 'services', 'echoContent'], function(app, topB
         window.document.body.appendChild(echoContainer);
         echoContainer.appendChild(rowContainer);
         utils._appendArr(rowContainer, [echoMiniPanel, echoContentPanel]);
+
+        window.document.body.appendChild(opmlContainer);
+        opmlContainer.appendChild(opmlContent);
+        utils._appendArr(opmlContent, [opmlMenu, opmlVideo]);
 
         it('Init App', function() {
             expect(app.init).toBeDefined();
@@ -58,6 +79,11 @@ define(['app', 'topBar', 'utils', 'services', 'echoContent'], function(app, topB
         it('Test services parseRSS function', function() {
             services.parseRSS(rssObj.EchoJS, eCont.echoContent);
             //expect(echoMiniPanel.childNodes.length).toBeGreaterThan(1);
+            //expect(echoContentPanel.childNodes.length).toBeGreaterThan(1);
+        });
+
+        it('Test services parseOpml function', function() {
+            services.parseOpml(opmlUrl, oCont.opmlContent);
         });
     });
 });
