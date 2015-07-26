@@ -4,8 +4,9 @@ define([
     'utils',
     'services',
     'echoContent',
-    'opmlContent'
-], function(app, topBar, utils, services, eCont, oCont) {
+    'opmlContent',
+    'jquery'
+], function(app, topBar, utils, services, eCont, oCont, $) {
     'use strict';
 
     describe('Check Sphere App', function() {
@@ -60,6 +61,14 @@ define([
         opmlContainer.appendChild(opmlContent);
         utils._appendArr(opmlContent, [opmlMenu, opmlVideo]);
 
+        beforeEach(function() {
+            jasmine.Ajax.install();
+        });
+
+        afterEach(function() {
+            jasmine.Ajax.uninstall();
+        });
+
         it('Init App', function() {
             expect(app.init).toBeDefined();
             app.init();
@@ -76,7 +85,24 @@ define([
         });
 
         it('Test services parseRSS function', function() {
-            services.parseRSS(rssObj.EchoJS, eCont.echoContent);
+            function parseRSS(url, callback) {
+                $.ajax({
+                    url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(url),
+                    dataType: 'json',
+                    success: function(data) {
+                        callback(data.responseData.feed);
+                    },
+                    error: function(xhr) {
+                        console.error(xhr.statusText);
+                    }
+                });
+            }
+            spyOn($, 'ajax').and.callFake(function(e) {
+                expect(e.url).toBe(
+                    'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=http%3A%2F%2Fwww.echojs.com%2Frss');
+            });
+
+            parseRSS(rssObj.EchoJS, eCont.echoContent);
             //expect(echoMiniPanel.childNodes.length).toBeGreaterThan(1);
             //expect(echoContentPanel.childNodes.length).toBeGreaterThan(1);
         });
