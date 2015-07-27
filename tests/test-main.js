@@ -20,7 +20,9 @@ require.config({
         // utils
         'utils': 'js/utils/utils',
         // vendor
-        'jquery': 'node_modules/jquery/dist/jquery.min'
+        'jquery': 'node_modules/jquery/dist/jquery.min',
+        // sinon
+        'sinon': 'node_modules/jasmine-sinon/lib/jasmine-sinon'
     },
 
     // dynamically load all test files
