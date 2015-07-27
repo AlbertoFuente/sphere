@@ -28,6 +28,7 @@
     "jasmine": "^2.3.1",
     "jasmine-ajax": "^3.1.1",
     "jasmine-core": "^2.3.4",
+    "jasmine-sinon": "^0.4.0",
     "karma": "^0.12.37",
     "karma-chrome-launcher": "^0.2.0",
     "karma-firefox-launcher": "^0.1.6",
@@ -35,7 +36,9 @@
     "karma-jasmine-ajax": "^0.1.12",
     "karma-requirejs": "^0.2.2",
     "karma-safari-launcher": "^0.1.1",
-    "karma-spec-reporter": "0.0.19"
+    "karma-sinon": "^1.0.4",
+    "karma-spec-reporter": "0.0.19",
+    "sinon": "^1.15.4"
   },
   "devDependencies": {
     "jquery": "^2.1.4",
