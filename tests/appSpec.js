@@ -5,8 +5,9 @@ define([
     'services',
     'echoContent',
     'opmlContent',
-    'jquery'
-], function(app, topBar, utils, services, eCont, oCont, $) {
+    'jquery',
+    'sinon'
+], function(app, topBar, utils, services, eCont, oCont, $, sinon) {
     'use strict';
 
     describe('Check Sphere App', function() {
@@ -36,7 +37,8 @@ define([
             rssObj = {
                 EchoJS: 'http://www.echojs.com/rss'
             },
-            opmlUrl = 'xml/subscription_manager.xml';
+            opmlUrl = 'xml/subscription_manager.xml',
+            server;
 
         utils._setAttr(logo, 'class', 'brand-logo');
         utils._setAttr(navContainer, 'id', 'menuBar');
@@ -62,11 +64,11 @@ define([
         utils._appendArr(opmlContent, [opmlMenu, opmlVideo]);
 
         beforeEach(function() {
-            jasmine.Ajax.install();
+            server = sinon.fakeServer.create();
         });
 
         afterEach(function() {
-            jasmine.Ajax.uninstall();
+            server = sinon.fakeServer.restore();
         });
 
         it('Init App', function() {
@@ -85,30 +87,43 @@ define([
         });
 
         it('Test services parseRSS function', function() {
-            function parseRSS(url, callback) {
-                $.ajax({
-                    url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(url),
-                    dataType: 'json',
-                    success: function(data) {
-                        callback(data.responseData.feed);
-                    },
-                    error: function(xhr) {
-                        console.error(xhr.statusText);
+            var data = {
+                    responseData: {
+                        feed: {
+                            author: '',
+                            description: 'Description pending',
+                            feedUrl: 'http://www.echojs.com/rss',
+                            link: 'http://www.echojs.com',
+                            title: 'Echo JS',
+                            type: 'rss20',
+                            entries: [{
+                                author: '',
+                                categories: [],
+                                content: '<a href="http://www.echojs.com/news/15518">Comments</a>',
+                                contentSnippet: 'Comments',
+                                link: 'http://blog.couchbase.com/using-couchbase-in-your-ionic-framework-application-part-2',
+                                publishedDate: '',
+                                title: 'Using Couchbase in Your Ionic Framework Application Part 2'
+                            }]
+                        }
                     }
-                });
-            }
-            spyOn($, 'ajax').and.callFake(function(e) {
-                expect(e.url).toBe(
-                    'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=http%3A%2F%2Fwww.echojs.com%2Frss');
-            });
+                },
+                callback = null,
+                firstCall = null;
 
-            parseRSS(rssObj.EchoJS, eCont.echoContent);
-            //expect(echoMiniPanel.childNodes.length).toBeGreaterThan(1);
-            //expect(echoContentPanel.childNodes.length).toBeGreaterThan(1);
+            sinon.stub($, "ajax").yieldsTo("success", data);
+            callback = sinon.stub(eCont, 'echoContent');
+            services.parseRSS(rssObj.EchoJS, eCont.echoContent);
+            expect(callback.calledOnce).toBe(true);
+            firstCall = callback.firstCall;
+            expect(firstCall.args[0].title).toBe("Echo JS");
+            expect(firstCall.args[0].link).toBe("http://www.echojs.com");
+            expect(firstCall.args[0].entries[0].link).toBe('http://blog.couchbase.com/using-couchbase-in-your-ionic-framework-application-part-2');
+            expect(firstCall.args[0].entries[0].title).toBe('Using Couchbase in Your Ionic Framework Application Part 2');
         });
 
         it('Test services parseOpml function', function() {
-            services.parseOpml(opmlUrl, oCont.opmlContent);
+            //services.parseOpml(opmlUrl, oCont.opmlContent);
             //expect(opmlMenu.childNodes.length).toBeGreaterThan(1);
         });
     });
