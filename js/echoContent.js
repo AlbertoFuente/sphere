@@ -6,8 +6,7 @@ define('echoContent', ['utils', 'jquery'], function(utils, $) {
     // ===================================
 
     var _echoContent = function(posts) {
-        var container = utils._getId('container'),
-            miniPanel = null,
+        var miniPanel = null,
             title = null,
             link = null,
             postsContainer = null,
