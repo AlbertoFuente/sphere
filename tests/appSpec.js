@@ -60,7 +60,7 @@ define([
                 }
             },
             callback = null,
-            firstCall = null,
+            echoCall = null,
             XMLdata = {
                 childNodes: {
                     opml: {
@@ -123,6 +123,66 @@ define([
             this.server = sinon.fakeServer.restore();
         });
 
+        it('Test utils._isUnd function', function() {
+            expect(utils._isUnd(undefined)).toBe(true);
+        });
+
+        it('Test utils._isNull function', function() {
+            expect(utils._isNull(null)).toBe(true);
+        });
+
+        it('Test utils._setAttr function', function() {
+            var element = utils._create('div');
+            utils._setAttr(element, 'id', 'elementId');
+            expect(element.id).toBe('elementId');
+        });
+
+        it('Test utils._appendArr function', function() {
+            var container = utils._create('div'),
+                link = utils._create('a'),
+                text = utils._create('p');
+            utils._appendArr(container, [link, text]);
+            expect(container.childNodes.length).toBeGreaterThan(1);
+        });
+
+        it('Test utils._appendContent function', function() {
+            var container = utils._create('div'),
+                link = 'http://www.echojs.com/rss';
+            utils._appendContent(container, link);
+            expect(container.childNodes.length).toBeGreaterThan(0);
+            expect(container.childNodes[0].tagName).toBe('OBJECT');
+        });
+
+        it('Test utils._emptyMenuContainer function', function() {
+            var miniPanel = utils._getId('echoMiniPanel');
+            utils._emptyMenuContainer();
+            expect(miniPanel.childNodes.length).not.toBeGreaterThan(0);
+        });
+
+        it('Test utils._emptyContentContainer function', function() {
+            var contentPanel = utils._getId('echoContentPanel');
+            utils._emptyContentContainer();
+            expect(contentPanel.childNodes.length).not.toBeGreaterThan(0);
+        });
+
+        it('Test utils._create function', function() {
+            var element = utils._create('div');
+            expect(element.tagName).toBe('DIV');
+        });
+
+        it('Test utils._getId function', function() {
+            expect(utils._getId('menuBar')).toBe(navContainer);
+        });
+
+        it('Test utils._getClass function', function() {
+            expect(utils._getClass('brand-logo')).toContain(logo);
+        });
+
+        it('Test utils._youtubeIfrm function', function() {
+            var ifrm = utils._youtubeIfrm('http://www.echojs.com/');
+            expect(ifrm.tagName).toBe('IFRAME');
+        });
+
         it('Init App', function() {
             expect(app.init).toBeDefined();
             app.init();
@@ -142,13 +202,13 @@ define([
             sinon.stub($, 'ajax').yieldsTo('success', data);
             callback = sinon.stub(eCont, 'echoContent');
             services.parseRSS(rssObj.EchoJS, eCont.echoContent);
-            firstCall = callback.firstCall;
+            echoCall = callback.firstCall;
 
             expect(callback.calledOnce).toBe(true);
-            expect(firstCall.args[0].title).toBe('Echo JS');
-            expect(firstCall.args[0].link).toBe('http://www.echojs.com');
-            expect(firstCall.args[0].entries[0].link).toBe('http://blog.couchbase.com/using-couchbase-in-your-ionic-framework-application-part-2');
-            expect(firstCall.args[0].entries[0].title).toBe('Using Couchbase in Your Ionic Framework Application Part 2');
+            expect(echoCall.args[0].title).toBe('Echo JS');
+            expect(echoCall.args[0].link).toBe('http://www.echojs.com');
+            expect(echoCall.args[0].entries[0].link).toBe('http://blog.couchbase.com/using-couchbase-in-your-ionic-framework-application-part-2');
+            expect(echoCall.args[0].entries[0].title).toBe('Using Couchbase in Your Ionic Framework Application Part 2');
 
             eCont.echoContent.restore();
             $.ajax.restore();
