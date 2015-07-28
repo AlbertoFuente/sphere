@@ -1,13 +1,13 @@
 define([
+    'jquery',
     'app',
     'topBar',
-    'utils',
     'services',
     'echoContent',
     'opmlContent',
-    'jquery',
+    'utils',
     'sinon'
-], function(app, topBar, utils, services, eCont, oCont, $, sinon) {
+], function($, app, topBar, services, eCont, oCont, utils, sinon) {
     'use strict';
 
     describe('Check Sphere App', function() {
@@ -38,14 +38,66 @@ define([
                 EchoJS: 'http://www.echojs.com/rss'
             },
             opmlUrl = 'xml/subscription_manager.xml',
-            server;
+            data = {
+                responseData: {
+                    feed: {
+                        author: '',
+                        description: 'Description pending',
+                        feedUrl: 'http://www.echojs.com/rss',
+                        link: 'http://www.echojs.com',
+                        title: 'Echo JS',
+                        type: 'rss20',
+                        entries: [{
+                            author: '',
+                            categories: [],
+                            content: '<a href="http://www.echojs.com/news/15518">Comments</a>',
+                            contentSnippet: 'Comments',
+                            link: 'http://blog.couchbase.com/using-couchbase-in-your-ionic-framework-application-part-2',
+                            publishedDate: '',
+                            title: 'Using Couchbase in Your Ionic Framework Application Part 2'
+                        }]
+                    }
+                }
+            },
+            callback = null,
+            firstCall = null,
+            XMLdata = {
+                childNodes: {
+                    opml: {
+                        childNodes: {
+                            text: {},
+                            body: {
+                                childNodes: {
+                                    outline: {
+                                        attributes: {
+                                            text: {
+                                                value: 'Suscripciones de YouTube'
+                                            }
+                                        },
+                                        childNodes: {
+                                            outline: {
+                                                nodeName: 'outline',
+                                                outerHTML: '<outline text="Madrid JS Meetup" title="Madrid JS Meetup" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCl6PWnh77qmFkuRwVwkv67g"/>'
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            opmlCall = null;
 
         utils._setAttr(logo, 'class', 'brand-logo');
         utils._setAttr(navContainer, 'id', 'menuBar');
         utils._setAttr(options, 'id', 'nav-mobile');
         utils._setAttr(echoContainer, 'id', 'container');
+        utils._setAttr(echoContainer, 'class', 'row');
         utils._setAttr(echoMiniPanel, 'id', 'echoMiniPanel');
+        utils._setAttr(echoMiniPanel, 'class', 'col s2 echoMenu');
         utils._setAttr(echoContentPanel, 'id', 'echoContentPanel');
+        utils._setAttr(echoContentPanel, 'class', 'col s10 echoContent');
         utils._setAttr(rowContainer, 'class', 'row');
         utils._setAttr(opmlContainer, 'id', 'opmlContainer');
         utils._setAttr(opmlContent, 'class', 'opmlContent');
@@ -64,11 +116,11 @@ define([
         utils._appendArr(opmlContent, [opmlMenu, opmlVideo]);
 
         beforeEach(function() {
-            server = sinon.fakeServer.create();
+            this.server = sinon.fakeServer.create();
         });
 
         afterEach(function() {
-            server = sinon.fakeServer.restore();
+            this.server = sinon.fakeServer.restore();
         });
 
         it('Init App', function() {
@@ -87,44 +139,36 @@ define([
         });
 
         it('Test services parseRSS function', function() {
-            var data = {
-                    responseData: {
-                        feed: {
-                            author: '',
-                            description: 'Description pending',
-                            feedUrl: 'http://www.echojs.com/rss',
-                            link: 'http://www.echojs.com',
-                            title: 'Echo JS',
-                            type: 'rss20',
-                            entries: [{
-                                author: '',
-                                categories: [],
-                                content: '<a href="http://www.echojs.com/news/15518">Comments</a>',
-                                contentSnippet: 'Comments',
-                                link: 'http://blog.couchbase.com/using-couchbase-in-your-ionic-framework-application-part-2',
-                                publishedDate: '',
-                                title: 'Using Couchbase in Your Ionic Framework Application Part 2'
-                            }]
-                        }
-                    }
-                },
-                callback = null,
-                firstCall = null;
-
-            sinon.stub($, "ajax").yieldsTo("success", data);
+            sinon.stub($, 'ajax').yieldsTo('success', data);
             callback = sinon.stub(eCont, 'echoContent');
             services.parseRSS(rssObj.EchoJS, eCont.echoContent);
-            expect(callback.calledOnce).toBe(true);
             firstCall = callback.firstCall;
-            expect(firstCall.args[0].title).toBe("Echo JS");
-            expect(firstCall.args[0].link).toBe("http://www.echojs.com");
+
+            expect(callback.calledOnce).toBe(true);
+            expect(firstCall.args[0].title).toBe('Echo JS');
+            expect(firstCall.args[0].link).toBe('http://www.echojs.com');
             expect(firstCall.args[0].entries[0].link).toBe('http://blog.couchbase.com/using-couchbase-in-your-ionic-framework-application-part-2');
             expect(firstCall.args[0].entries[0].title).toBe('Using Couchbase in Your Ionic Framework Application Part 2');
+
+            eCont.echoContent.restore();
+            $.ajax.restore();
         });
 
         it('Test services parseOpml function', function() {
-            //services.parseOpml(opmlUrl, oCont.opmlContent);
-            //expect(opmlMenu.childNodes.length).toBeGreaterThan(1);
+            sinon.stub($, 'ajax').yieldsTo('success', XMLdata);
+            callback = sinon.stub(oCont, 'opmlContent');
+            services.parseOpml(opmlUrl, oCont.opmlContent);
+            opmlCall = callback.firstCall;
+
+            expect(callback.calledOnce).toBe(true);
+            expect(opmlCall.args[0].childNodes.opml.childNodes.body.childNodes.outline.attributes.text.value).toBe('Suscripciones de YouTube');
+            expect(opmlCall.args[0].childNodes.opml.childNodes.body.childNodes.outline.childNodes.outline.nodeName).toBe('outline');
+            expect(opmlCall.args[0].childNodes.opml.childNodes.body.childNodes.outline.childNodes.outline.outerHTML).toBe(
+                '<outline text="Madrid JS Meetup" title="Madrid JS Meetup" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCl6PWnh77qmFkuRwVwkv67g"/>'
+            );
+
+            oCont.opmlContent.restore();
+            $.ajax.restore();
         });
     });
 });
