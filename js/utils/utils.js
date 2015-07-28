@@ -16,7 +16,7 @@ define('utils', function() {
         },
         // APPENDCHILD ARRAY OF ELEMENTS (in order)
         _appendArray = function(parent, elements) {
-            if (!_isUndefined(parent) && !_isUndefined(elements) && elements.length > 0) {
+            if (!this._isUnd(parent) && !this._isUnd(elements) && elements.length > 0) {
                 var i = 0,
                     elLength = elements.length;
                 for (i; i < elLength; i++) {
