@@ -64,3 +64,37 @@ gulp.task('watch', function() {
         gulp.start('js');
     });
 });
+
+gulp.task('default', function() {
+    'use strict';
+
+    gulp.src('styles/styles.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(minifyCSS({
+            keepBreaks: true
+        }))
+        .pipe(rename('styles.min.css'))
+        .pipe(gulp.dest('styles'));
+
+    gulp.src([
+            'js/utils/utils.js',
+            'js/app.js',
+            'js/echoContent.js',
+            'js/opmlContent.js',
+            'js/services.js',
+            'js/topBar.js',
+            'js/main.js'
+        ])
+        .pipe(concat('sphere.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('script/'));
+
+    gulp.src(testFiles)
+        .pipe(karma({
+            configFile: 'karma.conf.js',
+            action: 'run'
+        }))
+        .on('error', function(err) {
+            throw err;
+        });
+});
