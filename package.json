@@ -41,7 +41,7 @@
     "sinon": "^1.15.4"
   },
   "devDependencies": {
-    "jquery": "^2.1.4",
+    "jquery": "^3.0.0",
     "materialize-css": "^0.96.1",
     "requirejs": "^2.1.19"
   }
